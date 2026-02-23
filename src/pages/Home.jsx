@@ -6,30 +6,6 @@ import PageTransition from "../components/PageTransition";
 import { siteConfig } from "../data/content";
 
 export default function Home() {
-    const headingRef = useRef(null);
-    const lineRefs = useRef([]);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Animate each line with text reveal mask
-            lineRefs.current.forEach((line, i) => {
-                if (!line) return;
-                gsap.fromTo(
-                    line,
-                    { clipPath: "inset(0 100% 0 0)" },
-                    {
-                        clipPath: "inset(0 0% 0 0)",
-                        duration: 1,
-                        delay: 0.6 + i * 0.15,
-                        ease: "power3.out",
-                    }
-                );
-            });
-        }, headingRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
         <PageTransition>
             {/* Background — dark gradient, no video */}
@@ -42,7 +18,7 @@ export default function Home() {
             {/* Content */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 h-full pt-24 pb-12">
                 {/* Left: Text Content */}
-                <div ref={headingRef} className="flex-1 flex flex-col justify-center max-w-2xl">
+                <div className="flex-1 flex flex-col justify-center max-w-2xl">
                     {/* Small tag */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -50,31 +26,28 @@ export default function Home() {
                         transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         className="mb-6"
                     >
-                        <span className="text-xs tracking-[0.3em] uppercase text-white/40 font-medium">
-                            Portfolio — 2026
+                        <span className="text-xs tracking-[0.3em] uppercase text-white/80 font-medium">
+                            Hi, I’m Suhel Ansari —
                         </span>
                     </motion.div>
 
-                    {/* Heading */}
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-8">
-                        <span
-                            ref={(el) => (lineRefs.current[0] = el)}
-                            className="block line-mask"
-                        >
-                            Building
-                        </span>
-                        <span
-                            ref={(el) => (lineRefs.current[1] = el)}
-                            className="block line-mask"
-                        >
-                            Intelligent
-                        </span>
-                        <span
-                            ref={(el) => (lineRefs.current[2] = el)}
-                            className="block line-mask"
-                        >
-                            Digital Systems.
-                        </span>
+                    {/* Heading with word reveal */}
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-8 overflow-hidden">
+                        {["Building", "Intelligent", "Digital", "Systems."].map((word, i) => (
+                            <motion.span
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{
+                                    delay: 0.5 + i * 0.1,
+                                    duration: 0.8,
+                                    ease: [0.22, 1, 0.36, 1]
+                                }}
+                                className="inline-block mr-[0.2em]"
+                            >
+                                {word}
+                            </motion.span>
+                        ))}
                     </h1>
 
                     {/* Subtext */}
