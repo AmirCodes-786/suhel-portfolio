@@ -52,7 +52,7 @@ const itemVariants = {
 export default function Achievements() {
     return (
         <PageTransition>
-            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-28 pb-12">
+            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-28 pb-12 overflow-y-auto">
                 {/* Section label */}
                 <motion.span
                     initial={{ opacity: 0, y: 20 }}

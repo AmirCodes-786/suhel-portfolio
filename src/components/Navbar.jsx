@@ -8,7 +8,7 @@ import PremiumThemeToggle from "./ThemeToggle";
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
+    const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
     const navRefs = useRef({});
     const location = useLocation();
 
@@ -18,11 +18,15 @@ export default function Navbar() {
             const activeEl = navRefs.current[location.pathname];
             if (activeEl) {
                 const { offsetLeft, offsetWidth } = activeEl;
-                setPillStyle({ left: offsetLeft, width: offsetWidth });
+                setPillStyle({ left: offsetLeft, width: offsetWidth, opacity: 1 });
+            } else {
+                setPillStyle((prev) => ({ ...prev, opacity: 0 }));
             }
         };
 
         updatePill();
+        // Small delay to ensure refs are populated on initial load
+        setTimeout(updatePill, 50);
         window.addEventListener("resize", updatePill);
         return () => window.removeEventListener("resize", updatePill);
     }, [location.pathname]);
@@ -73,7 +77,7 @@ export default function Navbar() {
                             {/* Sliding pill indicator */}
                             <motion.div
                                 className="absolute h-8 bg-dark rounded-full z-0 will-change-transform transform-gpu"
-                                animate={{ left: pillStyle.left - 8, width: pillStyle.width + 16 }}
+                                animate={{ left: pillStyle.left - 8, width: pillStyle.width + 16, opacity: pillStyle.opacity }}
                                 transition={{ type: "spring", stiffness: 350, damping: 30 }}
                                 style={{ top: "50%", translateY: "-50%" }}
                             />

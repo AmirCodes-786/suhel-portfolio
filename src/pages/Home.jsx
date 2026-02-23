@@ -5,10 +5,8 @@ import gsap from "gsap";
 import PageTransition from "../components/PageTransition";
 import { siteConfig } from "../data/content";
 
-// Detect low-end or mobile devices that shouldn't play video
+// Detect low-end devices that shouldn't play video to optimize performance
 function shouldShowVideo() {
-    // Skip on narrow screens (mobile)
-    if (window.innerWidth < 768) return false;
     // Check device memory (< 4GB = low-end)
     if (navigator.deviceMemory && navigator.deviceMemory < 4) return false;
     // Check CPU cores (< 4 = low-end)
