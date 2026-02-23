@@ -7,7 +7,7 @@ export const siteConfig = {
     "BCA Data Science & AI Student",
   ],
   email: "sohelmessi786@gmail.com",
-  linkedin: "www.linkedin.com/in/suhel-ansari-2a932224b",
+  linkedin: "https://www.linkedin.com/in/suhel-ansari-2a932224b",
   github: "https://github.com/AmirCodes-786",
 };
 
