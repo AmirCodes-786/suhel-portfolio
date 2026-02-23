@@ -150,7 +150,7 @@ export default function ProjectModal({ project, onClose }) {
                                     href={project.live}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-6 py-3 border border-dark/15 text-dark rounded-full text-sm font-medium hover:bg-dark hover:text-milky transition-colors"
+                                    className="flex items-center gap-2 px-6 py-3 border border-dark/15 rounded-full text-sm font-medium bg-dark text-milky md:bg-transparent md:text-dark md:hover:bg-dark md:hover:text-milky transition-all"
                                 >
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" strokeLinecap="round" strokeLinejoin="round" />
