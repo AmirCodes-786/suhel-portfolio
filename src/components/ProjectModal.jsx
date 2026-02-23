@@ -32,7 +32,7 @@ export default function ProjectModal({ project, onClose }) {
         <AnimatePresence>
             {project && (
                 <motion.div
-                    className="fixed inset-0 z-[200] flex items-center justify-center p-4 pt-24 md:p-8 md:pt-24"
+                    className="fixed inset-0 z-[200] flex p-4 pt-32 pb-4 md:p-8 md:pt-32"
                     variants={backdropVariants}
                     initial="hidden"
                     animate="visible"
@@ -50,7 +50,7 @@ export default function ProjectModal({ project, onClose }) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-milky rounded-3xl p-8 md:p-12 shadow-2xl z-10"
+                        className="relative w-full max-w-2xl max-h-full m-auto overflow-y-auto bg-milky rounded-3xl p-6 md:p-12 shadow-2xl z-10"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close button */}
@@ -69,7 +69,7 @@ export default function ProjectModal({ project, onClose }) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15, duration: 0.5 }}
-                            className="text-3xl md:text-4xl font-bold text-dark tracking-tight mb-2"
+                            className="text-3xl md:text-4xl font-bold text-dark tracking-tight mb-2 pr-12 md:pr-0"
                         >
                             {project.title}
                         </motion.h2>
