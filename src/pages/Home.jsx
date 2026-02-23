@@ -41,15 +41,7 @@ export default function Home() {
         <PageTransition>
             {/* Background: Poster image + video */}
             <div className="absolute inset-0 z-0">
-                {/* Static poster */}
-                <img
-                    src="/hero-poster.jpg"
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    fetchPriority="high"
-                />
+
 
                 {/* Video */}
                 {showVideo && (
