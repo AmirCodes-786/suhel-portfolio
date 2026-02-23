@@ -10,13 +10,19 @@ export default function Navbar() {
     const navRefs = useRef({});
     const location = useLocation();
 
-    // Update pill position on route change
+    // Update pill position on route change and window resize
     useEffect(() => {
-        const activeEl = navRefs.current[location.pathname];
-        if (activeEl) {
-            const { offsetLeft, offsetWidth } = activeEl;
-            setPillStyle({ left: offsetLeft, width: offsetWidth });
-        }
+        const updatePill = () => {
+            const activeEl = navRefs.current[location.pathname];
+            if (activeEl) {
+                const { offsetLeft, offsetWidth } = activeEl;
+                setPillStyle({ left: offsetLeft, width: offsetWidth });
+            }
+        };
+
+        updatePill();
+        window.addEventListener("resize", updatePill);
+        return () => window.removeEventListener("resize", updatePill);
     }, [location.pathname]);
 
     // Magnetic hover effect

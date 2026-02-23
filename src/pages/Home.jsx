@@ -1,33 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import PageTransition from "../components/PageTransition";
 import { siteConfig } from "../data/content";
 
-// Detect low-end or mobile devices that shouldn't play video
-function shouldShowVideo() {
-    // Skip on narrow screens (mobile)
-    if (window.innerWidth < 768) return false;
-    // Check device memory (< 4GB = low-end)
-    if (navigator.deviceMemory && navigator.deviceMemory < 4) return false;
-    // Check CPU cores (< 4 = low-end)
-    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) return false;
-    // Check connection speed
-    const conn = navigator.connection;
-    if (conn) {
-        if (conn.saveData) return false;
-        if (conn.effectiveType === "2g" || conn.effectiveType === "slow-2g") return false;
-    }
-    return true;
-}
-
 export default function Home() {
     const headingRef = useRef(null);
     const lineRefs = useRef([]);
-    const videoRef = useRef(null);
-    const [showVideo, setShowVideo] = useState(false);
-    const [videoLoaded, setVideoLoaded] = useState(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -50,54 +30,13 @@ export default function Home() {
         return () => ctx.revert();
     }, []);
 
-    // Lazy load video after initial render
-    useEffect(() => {
-        if (!shouldShowVideo()) return;
-
-        // Delay video load to prioritize first paint
-        const timer = setTimeout(() => {
-            setShowVideo(true);
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
         <PageTransition>
-            {/* Background: Poster image (always visible) + video (lazy-loaded on capable devices) */}
+            {/* Background — dark gradient, no video */}
             <div className="absolute inset-0 z-0">
-                {/* Static poster — always shown first, acts as mobile fallback */}
-                <img
-                    src="/hero-poster.jpg"
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    loading="eager"
-                    fetchPriority="high"
-                />
-
-                {/* Video — lazy-loaded after render, only on capable devices */}
-                {showVideo && (
-                    <video
-                        ref={videoRef}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="none"
-                        onCanPlayThrough={() => setVideoLoaded(true)}
-                        className={`absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-1000 ${videoLoaded ? "opacity-90" : "opacity-0"}`}
-                    >
-                        {/* WebM first (smaller file size) → MP4 fallback */}
-                        <source src="/hero-video.webm" type="video/webm" />
-                        <source src="/hero-video.mp4" type="video/mp4" />
-                    </video>
-                )}
-
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#1a1a1a]" />
                 {/* Dark overlay */}
                 <div className="absolute inset-0 hero-overlay" />
-                {/* Slight blur overlay */}
-                <div className="absolute inset-0 backdrop-blur-[2px]" />
             </div>
 
             {/* Content */}
@@ -210,7 +149,7 @@ export default function Home() {
                     </motion.div>
                 </div>
 
-                {/* Right: Geometric Element */}
+                {/* Right: Hero Image */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -218,6 +157,9 @@ export default function Home() {
                     className="hidden md:flex flex-1 items-center justify-center"
                 >
                     <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+                        {/* Soft glow behind image */}
+                        <div className="absolute inset-0 rounded-full bg-white/[0.04] blur-3xl scale-110" />
+
                         {/* Rotating outer ring */}
                         <motion.div
                             animate={{ rotate: 360 }}
@@ -228,16 +170,20 @@ export default function Home() {
                         <motion.div
                             animate={{ rotate: -360 }}
                             transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-                            className="absolute inset-8 rounded-full border border-white/[0.07]"
+                            className="absolute inset-4 rounded-full border border-white/[0.07]"
                         />
-                        {/* Inner circle */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-                            className="absolute inset-16 rounded-full border border-white/[0.05]"
-                        />
-                        {/* Center dot */}
-                        <div className="absolute top-1/2 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30" />
+
+                        {/* Profile Image */}
+                        <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl shadow-black/40">
+                            <img
+                                src="/Heropic.jpeg"
+                                alt="Suhel"
+                                className="w-full h-full object-cover object-top scale-110"
+                                loading="eager"
+                            />
+                            {/* Subtle overlay to blend with dark theme */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+                        </div>
 
                         {/* Floating dots on rings */}
                         <motion.div
@@ -250,7 +196,7 @@ export default function Home() {
                         <motion.div
                             animate={{ rotate: -360 }}
                             transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-                            className="absolute inset-8"
+                            className="absolute inset-4"
                         >
                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/30" />
                         </motion.div>

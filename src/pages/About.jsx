@@ -54,15 +54,17 @@ export default function About() {
 
                 {/* Paragraphs with stagger */}
                 <div className="space-y-6 max-w-2xl">
-                    {aboutContent.paragraphs.map((para, i) => (
-                        <p
-                            key={i}
-                            ref={(el) => (paragraphRefs.current[i] = el)}
-                            className="text-base md:text-lg text-dark/55 leading-relaxed opacity-0"
-                        >
-                            {para}
-                        </p>
-                    ))}
+                    {aboutContent.paragraphs.flatMap((para, i) =>
+                        para.split("\n\n").map((chunk, j) => (
+                            <p
+                                key={`${i}-${j}`}
+                                ref={(el) => (paragraphRefs.current[i * 10 + j] = el)}
+                                className="text-base md:text-lg text-dark/55 leading-relaxed opacity-0"
+                            >
+                                {chunk}
+                            </p>
+                        ))
+                    )}
                 </div>
 
                 {/* Decorative line */}

@@ -14,10 +14,13 @@ export const siteConfig = {
 export const aboutContent = {
   title: "From Curiosity to Intelligent Systems",
   paragraphs: [
-    "I started building things because I was curious — not about tutorials, but about how real products work behind the screen. That curiosity led me into full-stack development, where I learned to build complete systems, not just pages.",
-    "Today, my focus has shifted toward intelligent systems — tools that think, adapt, and solve real problems. I combine my understanding of full-stack architecture with AI capabilities to create products that go beyond basic CRUD operations.",
-    "I believe in product-first thinking: every line of code should serve a purpose, every feature should solve a pain point, and every interface should feel effortless. I don't build clones — I build solutions.",
-    "Currently pursuing my BCA in Data Science & AI, I'm at the intersection of software engineering and artificial intelligence, building the next generation of intelligent digital products.",
+    `I started building things out of curiosity — not just to follow tutorials, but to understand how real digital products work behind the screen. That curiosity quickly evolved into a deep interest in full-stack development, where I learned to design and build complete systems rather than isolated pages.
+
+As I grew, my focus naturally shifted toward intelligent systems — products that don't just function, but think, adapt, and solve real problems. Today, I combine full-stack engineering with AI capabilities to create tools that go beyond basic functionality and deliver meaningful impact.
+
+I believe in product-first thinking. Every line of code should have a purpose, every feature should solve a real pain point, and every interface should feel intuitive. I don't build clones or tutorial projects — I build solutions designed for real users and real-world use.
+
+Currently pursuing a Bachelor of Computer Applications with a specialization in Data Science and Artificial Intelligence, I stand at the intersection of software engineering and AI, continuously exploring how intelligent technologies can shape the next generation of digital products.`,
   ],
 };
 
