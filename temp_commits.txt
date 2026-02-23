@@ -1,0 +1,4 @@
+﻿dbf09852fe623ea6fcc82bd3250f5120f5ddc5e8 Add home page headline animation and brighten intro text
+56f638fa156434353ffbfbf3921aacfc4c4c1c72 Update domain info and fix navbar/content formatting
+e7745f58ebc26e28adb0f675a8c24642ba4f7a66 Add vercel.json for SPA routing
+e1e90ee5c1fbb250dd0c474a9bc3aab6d40a8f8c Initial commit: Suhel Portfolio with all optimizations

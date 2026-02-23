@@ -53,13 +53,13 @@ export default function About() {
                 </motion.h1>
 
                 {/* Paragraphs with stagger */}
-                <div className="space-y-6 max-w-2xl">
+                <div className="space-y-6 max-w-2xl transform-gpu">
                     {aboutContent.paragraphs.flatMap((para, i) =>
                         para.split("\n\n").map((chunk, j) => (
                             <p
                                 key={`${i}-${j}`}
                                 ref={(el) => (paragraphRefs.current[i * 10 + j] = el)}
-                                className="text-base md:text-lg text-dark/55 leading-relaxed opacity-0"
+                                className="text-base md:text-lg text-dark/55 leading-relaxed opacity-0 will-change-transform transform-gpu"
                             >
                                 {chunk}
                             </p>

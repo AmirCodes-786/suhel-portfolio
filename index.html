@@ -65,13 +65,14 @@
     #root {
       min-height: 100vh;
       min-height: 100dvh;
-      background: #F8F8F6;
+      background-color: var(--color-milky, #F8F8F6);
     }
 
     /* Hide content until React hydrates — loader will show first */
     body {
       margin: 0;
-      background: #F8F8F6;
+      background-color: var(--color-milky, #F8F8F6);
+      color: var(--color-dark, #000000);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }

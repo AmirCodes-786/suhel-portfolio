@@ -33,7 +33,7 @@ export default function PageTransition({ children }) {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="page-section"
+            className="page-section will-change-transform will-change-[filter] transform-gpu"
         >
             {children}
         </motion.div>

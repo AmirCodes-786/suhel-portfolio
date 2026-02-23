@@ -71,7 +71,7 @@ export default function Skills() {
                             </h3>
                             <motion.div
                                 variants={containerVariants}
-                                className="flex flex-wrap gap-3"
+                                className="flex flex-wrap gap-3 will-change-transform transform-gpu"
                             >
                                 {skills.map((skill) => (
                                     <motion.div
@@ -81,9 +81,14 @@ export default function Skills() {
                                             scale: 1.05,
                                             boxShadow: "0 8px 30px rgba(34,197,94,0.15)",
                                         }}
-                                        className="group px-5 py-3 border border-dark/10 rounded-xl bg-milky cursor-default transition-all duration-300 hover:border-green-500/40 hover:bg-green-500/[0.07]"
+                                        whileTap={{
+                                            scale: 0.95,
+                                            boxShadow: "0 4px 15px rgba(34,197,94,0.15)",
+                                        }}
+                                        tabIndex={0}
+                                        className="group px-5 py-3 border border-dark/10 rounded-xl bg-milky cursor-default md:cursor-pointer transition-all duration-300 hover:border-green-500/40 hover:bg-green-500/[0.07] active:border-green-500/40 active:bg-green-500/[0.07] focus:border-green-500/40 focus:bg-green-500/[0.07] outline-none"
                                     >
-                                        <span className="text-sm font-medium text-dark/70 group-hover:text-green-600 transition-colors">
+                                        <span className="text-sm font-medium text-dark/70 group-hover:text-green-600 group-active:text-green-600 group-focus:text-green-600 transition-colors">
                                             {skill}
                                         </span>
                                     </motion.div>

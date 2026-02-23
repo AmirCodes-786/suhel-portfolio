@@ -83,13 +83,13 @@ export default function Education() {
                         <div
                             key={edu.id}
                             ref={(el) => (nodeRefs.current[i] = el)}
-                            className="relative w-full max-w-lg mb-12 last:mb-0 opacity-0"
+                            className="relative w-full max-w-lg mb-12 last:mb-0 opacity-0 will-change-transform transform-gpu"
                         >
                             {/* Node dot */}
                             <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-3 h-3 rounded-full bg-dark border-4 border-milky z-10" />
 
                             {/* Card */}
-                            <div className="bg-white/50 border border-dark/5 rounded-2xl p-6 md:p-8 mt-4">
+                            <div className="bg-card-bg border border-dark/5 rounded-2xl p-6 md:p-8 mt-4">
                                 <span className="text-xs tracking-[0.15em] uppercase text-dark/30 font-medium">
                                     {edu.period}
                                 </span>

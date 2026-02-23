@@ -78,13 +78,13 @@ export default function Achievements() {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-12 md:gap-16"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-12 md:gap-16 transform-gpu"
                 >
                     {achievementsData.map((item, i) => (
                         <motion.div
                             key={i}
                             variants={itemVariants}
-                            className="flex flex-col"
+                            className="flex flex-col will-change-transform transform-gpu"
                         >
                             <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-dark tracking-tighter leading-none">
                                 <AnimatedCounter target={item.number} suffix={item.suffix} />

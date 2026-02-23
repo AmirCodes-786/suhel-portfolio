@@ -1,18 +1,79 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import PageTransition from "../components/PageTransition";
 import { siteConfig } from "../data/content";
 
+// Detect low-end or mobile devices that shouldn't play video
+function shouldShowVideo() {
+    // Skip on narrow screens (mobile)
+    if (window.innerWidth < 768) return false;
+    // Check device memory (< 4GB = low-end)
+    if (navigator.deviceMemory && navigator.deviceMemory < 4) return false;
+    // Check CPU cores (< 4 = low-end)
+    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) return false;
+    // Check connection speed
+    const conn = navigator.connection;
+    if (conn) {
+        if (conn.saveData) return false;
+        if (conn.effectiveType === "2g" || conn.effectiveType === "slow-2g") return false;
+    }
+    return true;
+}
+
 export default function Home() {
+    const videoRef = useRef(null);
+    const [showVideo, setShowVideo] = useState(false);
+    const [videoLoaded, setVideoLoaded] = useState(false);
+
+    // Lazy load video after initial render
+    useEffect(() => {
+        if (!shouldShowVideo()) return;
+
+        // Delay video load to prioritize first paint
+        const timer = setTimeout(() => {
+            setShowVideo(true);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <PageTransition>
-            {/* Background — dark gradient, no video */}
+            {/* Background: Poster image + video */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#1a1a1a]" />
+                {/* Static poster */}
+                <img
+                    src="/hero-poster.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                />
+
+                {/* Video */}
+                {showVideo && (
+                    <video
+                        ref={videoRef}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="none"
+                        onCanPlayThrough={() => setVideoLoaded(true)}
+                        className={`absolute inset-0 w-full h-full object-cover opacity-70 transition-opacity duration-1000 ${videoLoaded ? "opacity-70" : "opacity-0"}`}
+                    >
+                        <source src="/hero-video.webm" type="video/webm" />
+                        <source src="/hero-video.mp4" type="video/mp4" />
+                    </video>
+                )}
+
                 {/* Dark overlay */}
                 <div className="absolute inset-0 hero-overlay" />
+                {/* Slight blur overlay */}
+                <div className="absolute inset-0 backdrop-blur-[2px]" />
             </div>
 
             {/* Content */}
@@ -78,7 +139,7 @@ export default function Home() {
                     >
                         <Link
                             to="/projects"
-                            className="group px-7 py-3.5 bg-white text-dark rounded-full text-sm font-medium hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2"
+                            className="group px-7 py-3.5 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-all duration-300 inline-flex items-center gap-2"
                         >
                             View Projects
                             <svg
@@ -127,27 +188,29 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    className="hidden md:flex flex-1 items-center justify-center"
+                    className="hidden md:flex flex-1 items-center justify-center will-change-transform"
                 >
-                    <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+                    <div className="relative w-72 h-72 lg:w-96 lg:h-96 transform-gpu">
                         {/* Soft glow behind image */}
-                        <div className="absolute inset-0 rounded-full bg-white/[0.04] blur-3xl scale-110" />
+                        <div className="absolute inset-0 rounded-full bg-white/[0.04] blur-3xl scale-110 will-change-transform" style={{ transform: "translateZ(0)" }} />
 
                         {/* Rotating outer ring */}
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                            className="absolute inset-0 rounded-full border border-white/10"
+                            className="absolute inset-0 rounded-full border border-white/10 will-change-transform"
+                            style={{ transformOrigin: "center center", transformStyle: "preserve-3d" }}
                         />
                         {/* Counter-rotating inner ring */}
                         <motion.div
                             animate={{ rotate: -360 }}
                             transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-                            className="absolute inset-4 rounded-full border border-white/[0.07]"
+                            className="absolute inset-4 rounded-full border border-white/[0.07] will-change-transform"
+                            style={{ transformOrigin: "center center", transformStyle: "preserve-3d" }}
                         />
 
                         {/* Profile Image */}
-                        <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl shadow-black/40">
+                        <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl shadow-black/40 will-change-transform transform-gpu">
                             <img
                                 src="/Heropic.jpeg"
                                 alt="Suhel"
@@ -155,23 +218,25 @@ export default function Home() {
                                 loading="eager"
                             />
                             {/* Subtle overlay to blend with dark theme */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
                         </div>
 
                         {/* Floating dots on rings */}
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-                            className="absolute inset-0"
+                            className="absolute inset-0 will-change-transform pointer-events-none"
+                            style={{ transformOrigin: "center center" }}
                         >
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/40" />
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/40 shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
                         </motion.div>
                         <motion.div
                             animate={{ rotate: -360 }}
                             transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-                            className="absolute inset-4"
+                            className="absolute inset-4 will-change-transform pointer-events-none"
+                            style={{ transformOrigin: "center center" }}
                         >
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/30" />
+                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white/30 shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
                         </motion.div>
                     </div>
                 </motion.div>

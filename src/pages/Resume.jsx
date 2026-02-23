@@ -11,14 +11,14 @@ export default function Resume() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="mb-10"
+                    className="mb-10 will-change-transform transform-gpu"
                 >
                     <div className="relative w-32 h-32 mx-auto">
                         {/* Outer pulsing ring */}
                         <motion.div
                             animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.05, 0.15] }}
                             transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                            className="absolute inset-0 rounded-3xl bg-dark"
+                            className="absolute inset-0 rounded-3xl bg-dark will-change-transform transform-gpu"
                         />
                         {/* Icon container */}
                         <div className="relative w-32 h-32 rounded-3xl bg-dark/[0.06] border border-dark/[0.08] flex items-center justify-center backdrop-blur-sm">
@@ -34,7 +34,7 @@ export default function Resume() {
                                 strokeWidth="1.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-dark/50"
+                                className="text-dark/50 will-change-transform transform-gpu"
                             >
                                 <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
                             </motion.svg>

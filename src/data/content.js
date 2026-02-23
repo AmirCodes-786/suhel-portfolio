@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Suhel",
-  tagline: "Building Intelligent Digital Systems.",
+  tagline: "Building Intelligent Digital Systems",
   roles: [
     "Full-Stack Developer",
     "AI Builder",

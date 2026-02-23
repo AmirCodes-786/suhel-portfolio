@@ -80,7 +80,7 @@ export default function Contact() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.7 }}
                         onSubmit={handleSubmit}
-                        className="space-y-6"
+                        className="space-y-6 will-change-transform transform-gpu"
                     >
                         {[
                             { name: "name", label: "Name", type: "text" },
@@ -133,7 +133,7 @@ export default function Contact() {
                             type="submit"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="px-8 py-3.5 bg-dark text-milky rounded-full text-sm font-medium hover:bg-dark/85 transition-colors"
+                            className="px-8 py-3.5 bg-dark text-milky rounded-full text-sm font-medium hover:bg-dark/85 transition-colors will-change-transform transform-gpu"
                         >
                             Send Message
                         </motion.button>
@@ -144,7 +144,7 @@ export default function Contact() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.7 }}
-                        className="flex flex-col justify-center gap-4"
+                        className="flex flex-col justify-center gap-4 will-change-transform transform-gpu"
                     >
                         <span className="text-xs tracking-[0.2em] uppercase text-dark/30 font-medium mb-2">
                             Connect

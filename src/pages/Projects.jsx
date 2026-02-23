@@ -77,7 +77,7 @@ export default function Projects() {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search projects..."
-                            className="w-full pl-10 pr-4 py-2.5 text-sm bg-white/60 border border-dark/[0.08] rounded-xl text-dark placeholder-dark/30 outline-none focus:border-dark/20 focus:bg-white/80 transition-all duration-300"
+                            className="w-full pl-10 pr-4 py-2.5 text-sm bg-card-bg border border-dark/[0.08] rounded-xl text-dark placeholder-dark/30 outline-none focus:border-dark/20 focus:bg-card-hover transition-all duration-300"
                         />
                     </motion.div>
                 </div>
@@ -105,7 +105,7 @@ export default function Projects() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 + index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                                 onClick={() => setSelectedProject(project)}
-                                className="group cursor-pointer p-6 md:p-8 border border-dark/[0.06] rounded-2xl bg-white/40 hover:bg-white/70 transition-all duration-500 hover:border-dark/10 hover:shadow-lg hover:shadow-dark/[0.03]"
+                                className="group cursor-pointer p-6 md:p-8 border border-dark/[0.06] rounded-2xl bg-card-bg hover:bg-card-hover transition-all duration-500 hover:border-dark/10 hover:shadow-lg hover:shadow-dark/[0.03] will-change-transform transform-gpu"
                             >
                                 <div className="flex items-start justify-between gap-4">
                                     <div className="flex-1">
@@ -139,9 +139,9 @@ export default function Projects() {
                                     </div>
 
                                     {/* Arrow */}
-                                    <div className="mt-2 w-10 h-10 rounded-full border border-dark/[0.06] flex items-center justify-center group-hover:bg-dark group-hover:border-dark transition-all duration-300">
+                                    <div className="mt-2 w-10 h-10 rounded-full border border-dark bg-dark md:bg-transparent md:border-dark/[0.06] flex items-center justify-center group-hover:bg-dark group-hover:border-dark transition-all duration-300">
                                         <svg
-                                            className="w-4 h-4 text-dark/30 group-hover:text-white transition-colors -rotate-45"
+                                            className="w-4 h-4 text-milky md:text-dark/30 group-hover:text-milky transition-colors -rotate-45"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
