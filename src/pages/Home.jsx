@@ -29,10 +29,11 @@ export default function Home() {
     useEffect(() => {
         if (!shouldShowVideo()) return;
 
-        // Delay video load to prioritize first paint
+        // Delay video load until AFTER all page transition and text animations finish (1.5s)
+        // This prevents the browser from dropping frames while spinning up media pipelines
         const timer = setTimeout(() => {
             setShowVideo(true);
-        }, 500);
+        }, 1500);
 
         return () => clearTimeout(timer);
     }, []);
