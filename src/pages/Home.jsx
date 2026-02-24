@@ -56,8 +56,7 @@ export default function Home() {
                         onCanPlayThrough={() => setVideoLoaded(true)}
                         className={`absolute inset-0 w-full h-full object-cover opacity-70 transition-opacity duration-1000 ${videoLoaded ? "opacity-70" : "opacity-0"}`}
                     >
-                        <source src="/hero-video.webm" type="video/webm" />
-                        <source src="/hero-video.mp4" type="video/mp4" />
+                        <source src="https://res.cloudinary.com/dzly2px6w/video/upload/f_auto,q_auto,w_auto/v1771932115/hero-video_ctbeca.mp4" type="video/mp4" />
                     </video>
                 )}
 
