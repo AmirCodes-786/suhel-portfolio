@@ -59,6 +59,15 @@
     }
   </script>
 
+  <!-- Prevent theme FOUC -->
+  <script>
+    if (localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
   <!-- Critical inline styles to prevent FOUC (flash of unstyled content) -->
   <style>
     /* Prevent layout shift while JS loads */

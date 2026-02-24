@@ -7,7 +7,13 @@ import PremiumThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        // Initialize from local storage, defaulting to light mode (false) if not set
+        if (typeof window !== "undefined") {
+            return localStorage.theme === "dark";
+        }
+        return false;
+    });
     const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
     const navRefs = useRef({});
     const location = useLocation();
@@ -31,12 +37,14 @@ export default function Navbar() {
         return () => window.removeEventListener("resize", updatePill);
     }, [location.pathname]);
 
-    // Handle theme switching
+    // Handle theme switching and saving to localStorage
     useEffect(() => {
         if (isDarkMode) {
             document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
         } else {
             document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
         }
     }, [isDarkMode]);
 
