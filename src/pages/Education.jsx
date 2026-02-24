@@ -55,7 +55,7 @@ export default function Education() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6 text-center"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6 text-center"
                 >
                     Education
                 </motion.span>
@@ -93,28 +93,28 @@ export default function Education() {
 
                             {/* Card */}
                             <div className="relative z-10 bg-card-bg border border-dark/5 rounded-2xl p-6 md:p-8 mt-4">
-                                <span className="text-xs tracking-[0.15em] uppercase text-dark/30 font-medium">
+                                <span className="text-xs tracking-[0.15em] uppercase text-dark/60 font-medium">
                                     {edu.period}
                                 </span>
                                 <h3 className="text-xl md:text-2xl font-bold text-dark mt-2 tracking-tight">
                                     {edu.degree}
                                 </h3>
-                                <p className="text-dark/60 text-sm font-medium mt-1">
+                                <p className="text-dark/90 text-sm font-medium mt-1">
                                     {edu.institution}
                                 </p>
-                                <p className="text-dark/40 text-sm mt-0.5 mb-4">
+                                <p className="text-dark/70 text-sm mt-0.5 mb-4">
                                     {edu.specialization}
                                 </p>
 
                                 <div className="space-y-2">
-                                    <span className="text-xs tracking-[0.15em] uppercase text-dark/30 font-medium">
+                                    <span className="text-xs tracking-[0.15em] uppercase text-dark/60 font-medium">
                                         Key Areas
                                     </span>
                                     <div className="flex flex-wrap gap-2 mt-2">
                                         {edu.areas.map((area) => (
                                             <span
                                                 key={area}
-                                                className="px-3 py-1.5 text-xs border border-dark/8 rounded-full text-dark/60 bg-dark/[0.02]"
+                                                className="px-3 py-1.5 text-xs border border-dark/8 rounded-full text-dark/90 bg-dark/[0.02]"
                                             >
                                                 {area}
                                             </span>

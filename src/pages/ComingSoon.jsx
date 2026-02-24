@@ -33,7 +33,7 @@ export default function ComingSoon() {
                                 strokeWidth="1.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-dark/50"
+                                className="text-dark/80"
                             >
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" />
                             </motion.svg>
@@ -56,7 +56,7 @@ export default function ComingSoon() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.55, duration: 0.7 }}
-                    className="text-dark/40 text-base md:text-lg max-w-md mb-2 leading-relaxed"
+                    className="text-dark/70 text-base md:text-lg max-w-md mb-2 leading-relaxed"
                 >
                     The source code for this project will be available for purchase soon.
                 </motion.p>
@@ -65,7 +65,7 @@ export default function ComingSoon() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.65, duration: 0.7 }}
-                    className="text-dark/55 text-base md:text-lg font-semibold mb-10"
+                    className="text-dark/85 text-base md:text-lg font-semibold mb-10"
                 >
                     Stay tuned. Thank You!
                 </motion.p>

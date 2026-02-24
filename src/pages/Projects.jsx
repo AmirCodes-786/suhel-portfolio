@@ -40,7 +40,7 @@ export default function Projects() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
                 >
                     Projects
                 </motion.span>
@@ -64,7 +64,7 @@ export default function Projects() {
                         className="relative w-full sm:w-64"
                     >
                         <svg
-                            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/25 pointer-events-none"
+                            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/55 pointer-events-none"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -91,7 +91,7 @@ export default function Projects() {
                     style={{ maxHeight: "calc(100vh - 320px)" }}
                 >
                     {filteredProjects.length === 0 ? (
-                        <div className="flex flex-col items-center justify-center py-20 text-dark/30">
+                        <div className="flex flex-col items-center justify-center py-20 text-dark/60">
                             <svg className="w-12 h-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
@@ -110,28 +110,28 @@ export default function Projects() {
                                 <div className="flex items-start justify-between gap-4">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-xs text-dark/30 font-mono">
+                                            <span className="text-xs text-dark/60 font-mono">
                                                 {String(project.id).padStart(2, "0")}
                                             </span>
                                             <div className="w-6 h-[1px] bg-dark/10" />
                                         </div>
-                                        <h3 className="text-xl md:text-2xl font-bold text-dark tracking-tight group-hover:text-dark/80 transition-colors">
+                                        <h3 className="text-xl md:text-2xl font-bold text-dark tracking-tight group-hover:text-dark transition-colors">
                                             {project.title}
                                         </h3>
-                                        <p className="text-dark/40 text-sm mt-2 max-w-md">
+                                        <p className="text-dark/70 text-sm mt-2 max-w-md">
                                             {project.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2 mt-4">
                                             {project.techStack.slice(0, 3).map((tech) => (
                                                 <span
                                                     key={tech}
-                                                    className="text-xs text-dark/30 border border-dark/[0.06] px-2.5 py-1 rounded-full"
+                                                    className="text-xs text-dark/60 border border-dark/[0.06] px-2.5 py-1 rounded-full"
                                                 >
                                                     {tech}
                                                 </span>
                                             ))}
                                             {project.techStack.length > 3 && (
-                                                <span className="text-xs text-dark/25 px-2.5 py-1">
+                                                <span className="text-xs text-dark/55 px-2.5 py-1">
                                                     +{project.techStack.length - 3} more
                                                 </span>
                                             )}
@@ -141,7 +141,7 @@ export default function Projects() {
                                     {/* Arrow */}
                                     <div className="mt-2 w-10 h-10 rounded-full border border-dark bg-dark md:bg-transparent md:border-dark/[0.06] flex items-center justify-center group-hover:bg-dark group-hover:border-dark transition-all duration-300">
                                         <svg
-                                            className="w-4 h-4 text-milky md:text-dark/30 group-hover:text-milky transition-colors -rotate-45"
+                                            className="w-4 h-4 text-milky md:text-dark/60 group-hover:text-milky transition-colors -rotate-45"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"

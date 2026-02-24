@@ -58,7 +58,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
                         aria-label="Close menu"
                     >
                         <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-dark/70" />
+                            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-dark" />
                         </svg>
                     </motion.button>
 
@@ -76,7 +76,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
                                     to={link.path}
                                     onClick={onClose}
                                     className={({ isActive }) =>
-                                        `text-4xl md:text-6xl font-bold tracking-tight transition-colors duration-300 ${isActive ? "text-dark" : "text-dark/30 hover:text-dark"
+                                        `text-4xl md:text-6xl font-bold tracking-tight transition-colors duration-300 ${isActive ? "text-dark" : "text-dark/60 hover:text-dark"
                                         }`
                                     }
                                 >
@@ -91,7 +91,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ delay: 0.6, duration: 0.5 }}
-                        className="absolute bottom-10 text-sm text-dark/30 tracking-widest uppercase"
+                        className="absolute bottom-10 text-sm text-dark/60 tracking-widest uppercase"
                     >
                         Navigation
                     </motion.p>

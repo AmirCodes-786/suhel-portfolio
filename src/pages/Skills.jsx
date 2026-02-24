@@ -42,7 +42,7 @@ export default function Skills() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
                 >
                     Skills
                 </motion.span>
@@ -66,7 +66,7 @@ export default function Skills() {
                 >
                     {categories.map(([category, skills]) => (
                         <motion.div key={category} variants={categoryVariants}>
-                            <h3 className="text-xs tracking-[0.2em] uppercase text-dark/35 font-medium mb-4">
+                            <h3 className="text-xs tracking-[0.2em] uppercase text-dark/65 font-medium mb-4">
                                 {category}
                             </h3>
                             <motion.div
@@ -88,7 +88,7 @@ export default function Skills() {
                                         tabIndex={0}
                                         className="group px-5 py-3 border border-dark/10 rounded-xl bg-milky cursor-default md:cursor-pointer transition-all duration-300 hover:border-green-500/40 hover:bg-green-500/[0.07] active:border-green-500/40 active:bg-green-500/[0.07] focus:border-green-500/40 focus:bg-green-500/[0.07] outline-none"
                                     >
-                                        <span className="text-sm font-medium text-dark/70 group-hover:text-green-600 group-active:text-green-600 group-focus:text-green-600 transition-colors">
+                                        <span className="text-sm font-medium text-dark group-hover:text-green-600 group-active:text-green-600 group-focus:text-green-600 transition-colors">
                                             {skill}
                                         </span>
                                     </motion.div>

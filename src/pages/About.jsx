@@ -37,7 +37,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
                 >
                     About
                 </motion.span>
@@ -59,7 +59,7 @@ export default function About() {
                             <p
                                 key={`${i}-${j}`}
                                 ref={(el) => (paragraphRefs.current[i * 10 + j] = el)}
-                                className="text-base md:text-lg text-dark/55 leading-relaxed opacity-0 will-change-transform transform-gpu"
+                                className="text-base md:text-lg text-dark/85 leading-relaxed opacity-0 will-change-transform transform-gpu"
                             >
                                 {chunk}
                             </p>

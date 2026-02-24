@@ -58,7 +58,7 @@ export default function Achievements() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
                 >
                     Achievements
                 </motion.span>
@@ -89,7 +89,7 @@ export default function Achievements() {
                             <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-dark tracking-tighter leading-none">
                                 <AnimatedCounter target={item.number} suffix={item.suffix} />
                             </span>
-                            <span className="text-sm md:text-base text-dark/35 mt-3 tracking-wide">
+                            <span className="text-sm md:text-base text-dark/65 mt-3 tracking-wide">
                                 {item.label}
                             </span>
                             <div className="w-12 h-[1px] bg-dark/8 mt-4" />

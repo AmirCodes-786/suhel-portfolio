@@ -56,7 +56,7 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/30 font-medium mb-6"
+                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
                 >
                     Contact
                 </motion.span>
@@ -95,7 +95,7 @@ export default function Contact() {
                                     onFocus={() => setFocusedField(field.name)}
                                     onBlur={() => setFocusedField(null)}
                                     placeholder={field.label}
-                                    className="w-full bg-transparent border-b border-dark/10 pb-3 pt-2 text-dark text-sm outline-none placeholder:text-dark/25 transition-colors focus:border-dark/40"
+                                    className="w-full bg-transparent border-b border-dark/10 pb-3 pt-2 text-dark text-sm outline-none placeholder:text-dark/85 transition-colors focus:border-dark/40"
                                     required
                                 />
                                 <motion.div
@@ -117,7 +117,7 @@ export default function Contact() {
                                 onBlur={() => setFocusedField(null)}
                                 placeholder="Message"
                                 rows={4}
-                                className="w-full bg-transparent border-b border-dark/10 pb-3 pt-2 text-dark text-sm outline-none placeholder:text-dark/25 transition-colors focus:border-dark/40 resize-none"
+                                className="w-full bg-transparent border-b border-dark/10 pb-3 pt-2 text-dark text-sm outline-none placeholder:text-dark/85 transition-colors focus:border-dark/40 resize-none"
                                 required
                             />
                             <motion.div
@@ -146,7 +146,7 @@ export default function Contact() {
                         transition={{ delay: 0.6, duration: 0.7 }}
                         className="flex flex-col justify-center gap-4 will-change-transform transform-gpu"
                     >
-                        <span className="text-xs tracking-[0.2em] uppercase text-dark/30 font-medium mb-2">
+                        <span className="text-xs tracking-[0.2em] uppercase text-dark/60 font-medium mb-2">
                             Connect
                         </span>
                         {socialLinks.map((link) => (
@@ -155,7 +155,7 @@ export default function Contact() {
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex items-center gap-4 py-3 text-dark/50 hover:text-dark transition-colors"
+                                className="group flex items-center gap-4 py-3 text-dark/80 hover:text-dark transition-colors"
                             >
                                 <div className="w-10 h-10 rounded-full border border-dark/8 flex items-center justify-center group-hover:bg-dark group-hover:text-milky group-hover:border-dark transition-all duration-300">
                                     {link.icon}

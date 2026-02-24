@@ -56,7 +56,7 @@ export default function ProjectModal({ project, onClose }) {
                         {/* Close button */}
                         <button
                             onClick={onClose}
-                            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-dark/5 hover:bg-dark/10 transition-colors text-dark/60 hover:text-dark"
+                            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-dark/5 hover:bg-dark/10 transition-colors text-dark/90 hover:text-dark"
                             aria-label="Close modal"
                         >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -78,7 +78,7 @@ export default function ProjectModal({ project, onClose }) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.5 }}
-                            className="text-dark/50 text-base mb-8"
+                            className="text-dark/80 text-base mb-8"
                         >
                             {project.description}
                         </motion.p>
@@ -90,10 +90,10 @@ export default function ProjectModal({ project, onClose }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.25, duration: 0.5 }}
                             >
-                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/40 mb-3 font-medium">
+                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/70 mb-3 font-medium">
                                     Problem
                                 </h3>
-                                <p className="text-dark/70 leading-relaxed">{project.problem}</p>
+                                <p className="text-dark leading-relaxed">{project.problem}</p>
                             </motion.div>
 
                             {/* Solution */}
@@ -102,10 +102,10 @@ export default function ProjectModal({ project, onClose }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3, duration: 0.5 }}
                             >
-                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/40 mb-3 font-medium">
+                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/70 mb-3 font-medium">
                                     Solution
                                 </h3>
-                                <p className="text-dark/70 leading-relaxed">{project.solution}</p>
+                                <p className="text-dark leading-relaxed">{project.solution}</p>
                             </motion.div>
 
                             {/* Tech stack */}
@@ -114,14 +114,14 @@ export default function ProjectModal({ project, onClose }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.35, duration: 0.5 }}
                             >
-                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/40 mb-3 font-medium">
+                                <h3 className="text-xs uppercase tracking-[0.2em] text-dark/70 mb-3 font-medium">
                                     Tech Stack
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.techStack.map((tech) => (
                                         <span
                                             key={tech}
-                                            className="px-3 py-1.5 text-sm border border-dark/10 rounded-full text-dark/70 bg-dark/[0.02]"
+                                            className="px-3 py-1.5 text-sm border border-dark/10 rounded-full text-dark bg-dark/[0.02]"
                                         >
                                             {tech}
                                         </span>

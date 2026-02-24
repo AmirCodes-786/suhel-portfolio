@@ -90,7 +90,7 @@ export default function Navbar() {
                                     onMouseMove={(e) => handleMouseMove(e, navRefs.current[link.path])}
                                     onMouseLeave={() => handleMouseLeave(navRefs.current[link.path])}
                                     className={({ isActive }) =>
-                                        `relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${isActive ? "text-milky" : "text-dark/60 hover:text-dark"
+                                        `relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${isActive ? "text-milky" : "text-dark/90 hover:text-dark"
                                         }`
                                     }
                                     style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), color 0.3s" }}

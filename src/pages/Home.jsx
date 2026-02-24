@@ -77,7 +77,7 @@ export default function Home() {
                         transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         className="mb-6"
                     >
-                        <span className="text-xs tracking-[0.3em] uppercase text-white/80 font-medium">
+                        <span className="text-xs tracking-[0.3em] uppercase text-white font-medium">
                             Hi, I’m Suhel Ansari —
                         </span>
                     </motion.div>
@@ -108,7 +108,7 @@ export default function Home() {
                         transition={{ delay: 1.2, duration: 0.7 }}
                         className="mb-10"
                     >
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-white/50">
+                        <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
                             {siteConfig.roles.map((role, i) => (
                                 <span key={i} className="flex items-center gap-3">
                                     {i > 0 && (

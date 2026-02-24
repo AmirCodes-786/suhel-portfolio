@@ -34,7 +34,7 @@ export default function Resume() {
                                 strokeWidth="1.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-dark/50 will-change-transform transform-gpu"
+                                className="text-dark/80 will-change-transform transform-gpu"
                             >
                                 <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
                             </motion.svg>
@@ -57,7 +57,7 @@ export default function Resume() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.55, duration: 0.7 }}
-                    className="text-dark/40 text-base md:text-lg max-w-md mb-2 leading-relaxed"
+                    className="text-dark/70 text-base md:text-lg max-w-md mb-2 leading-relaxed"
                 >
                     The resume section is currently being crafted.
                 </motion.p>
@@ -66,7 +66,7 @@ export default function Resume() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.65, duration: 0.7 }}
-                    className="text-dark/55 text-base md:text-lg font-semibold mb-10"
+                    className="text-dark/85 text-base md:text-lg font-semibold mb-10"
                 >
                     Kindly visit after some time. Thank You!
                 </motion.p>
