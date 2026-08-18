@@ -239,16 +239,27 @@ export const projectsData = [
     live: "https://amir-sohel-personal-portfolio.netlify.app",
     color: "#1a1a1a",
   },
+  {
+    id: 14,
+    title: "AI Quiz Generator (SaaS)",
+    description: "A production-grade AI SaaS platform that enables users to generate, take, manage, and share customized quizzes with real-time scoring and analytics.",
+    problem: "Educators, recruiters, and learners lack an integrated, scalable platform to quickly generate high-quality assessments, track participant attempts, and manage quiz histories.",
+    solution: "Engineered an end-to-end SaaS application featuring Clerk authentication, MongoDB cloud persistence, AI-powered multi-format quiz generation, timed exam modes, and detailed performance dashboards.",
+    techStack: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "AI API", "Clerk Authentication", "MongoDB"],
+    buyCode: "#",
+    live: "https://suhel-ai-quiz.vercel.app",
+    color: "#1a1a1a",
+  },
 ];
 
 export const achievementsData = [
   {
-    number: 13,
+    number: 14,
     suffix: "+",
     label: "AI Projects Built",
   },
   {
-    number: 13,
+    number: 14,
     suffix: "+",
     label: "Deployed Applications",
   },
