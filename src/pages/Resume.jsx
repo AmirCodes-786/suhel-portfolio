@@ -156,7 +156,7 @@ export default function Resume() {
                                 </div>
                                 <p className="text-xs text-dark/60 font-mono">React 19 · Node.js · Express · Socket.io · MongoDB Atlas · Gemini 2.0 · Groq LPU · Clerk</p>
                                 <p className="text-xs md:text-sm text-dark/80 leading-relaxed">
-                                    Next-gen multi-modal AI assessment platform supporting note/PDF/YouTube ingestion, Bloom’s Taxonomy calibration, real-time Socket.io battle arena, 3D flashcards, and public verifiable certificates.
+                                    End-to-end multi-modal study platform converting notes, PDFs, and YouTube lectures into Bloom-calibrated quizzes, real-time Socket.io battle rooms, 3D flashcards, and verified digital certificates.
                                 </p>
                             </div>
 
@@ -175,7 +175,7 @@ export default function Resume() {
                                 </div>
                                 <p className="text-xs text-dark/60 font-mono">React 19 · Vite · Tailwind CSS v4 · Express · MongoDB · TanStack Query · Supabase</p>
                                 <p className="text-xs md:text-sm text-dark/80 leading-relaxed">
-                                    Production-ready full-stack social platform featuring tab-switch feed stability, dynamic video duration stories, custom glassmorphism video player, dual JWT/Supabase auth, and 37 automated backend tests.
+                                    Production-ready social platform with zero-flash TanStack Query feed caching, dynamic video stories matching true clip length, custom HTML5 video player, and 37 automated backend tests.
                                 </p>
                             </div>
 
@@ -194,7 +194,7 @@ export default function Resume() {
                                 </div>
                                 <p className="text-xs text-dark/60 font-mono">React · Tailwind CSS · Node.js · Express · AI API · PDF Engine</p>
                                 <p className="text-xs md:text-sm text-dark/80 leading-relaxed">
-                                    Full-stack AI-powered resume creation platform featuring live side-by-side preview synchronization, role-specific accomplishment bullet generation, and ATS-compliant multi-template PDF exports.
+                                    Interactive resume builder with an integrated Mistral AI writing assistant, live side-by-side editing, ATS-optimized layout templates, profile photo uploads, and one-click PDF generation.
                                 </p>
                             </div>
                         </div>
