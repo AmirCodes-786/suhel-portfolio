@@ -11,6 +11,7 @@ const About = lazy(() => import("./pages/About"));
 const Education = lazy(() => import("./pages/Education"));
 const Skills = lazy(() => import("./pages/Skills"));
 const Projects = lazy(() => import("./pages/Projects"));
+const ProjectCaseStudy = lazy(() => import("./pages/ProjectCaseStudy"));
 const Achievements = lazy(() => import("./pages/Achievements"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Resume = lazy(() => import("./pages/Resume"));
@@ -25,6 +26,7 @@ function preloadAllRoutes() {
     import("./pages/Education");
     import("./pages/Skills");
     import("./pages/Projects");
+    import("./pages/ProjectCaseStudy");
     import("./pages/Achievements");
     import("./pages/Contact");
   });
@@ -48,6 +50,7 @@ function AnimatedRoutes() {
           <Route path="/education" element={<Education />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />

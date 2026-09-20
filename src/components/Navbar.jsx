@@ -20,8 +20,17 @@ export default function Navbar() {
 
     // Update pill position on route change and window resize
     useEffect(() => {
+        const getActiveNavPath = (pathname) => {
+            if (navRefs.current[pathname]) return pathname;
+            const matchingLink = navLinks.find(
+                (link) => link.path !== "/" && pathname.startsWith(link.path)
+            );
+            return matchingLink ? matchingLink.path : null;
+        };
+
         const updatePill = () => {
-            const activeEl = navRefs.current[location.pathname];
+            const activePath = getActiveNavPath(location.pathname);
+            const activeEl = activePath ? navRefs.current[activePath] : null;
             if (activeEl) {
                 const { offsetLeft, offsetWidth } = activeEl;
                 setPillStyle({ left: offsetLeft, width: offsetWidth, opacity: 1 });
@@ -32,9 +41,12 @@ export default function Navbar() {
 
         updatePill();
         // Small delay to ensure refs are populated on initial load
-        setTimeout(updatePill, 50);
+        const timer = setTimeout(updatePill, 60);
         window.addEventListener("resize", updatePill);
-        return () => window.removeEventListener("resize", updatePill);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", updatePill);
+        };
     }, [location.pathname]);
 
     // Handle theme switching and saving to localStorage
@@ -90,22 +102,29 @@ export default function Navbar() {
                                 style={{ top: "50%", translateY: "-50%" }}
                             />
 
-                            {navLinks.map((link) => (
-                                <NavLink
-                                    key={link.path}
-                                    to={link.path}
-                                    ref={(el) => (navRefs.current[link.path] = el)}
-                                    onMouseMove={(e) => handleMouseMove(e, navRefs.current[link.path])}
-                                    onMouseLeave={() => handleMouseLeave(navRefs.current[link.path])}
-                                    className={({ isActive }) =>
-                                        `relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${isActive ? "text-milky" : "text-dark/90 hover:text-dark"
-                                        }`
-                                    }
-                                    style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), color 0.3s" }}
-                                >
-                                    {link.name}
-                                </NavLink>
-                            ))}
+                            {navLinks.map((link) => {
+                                const isLinkActive =
+                                    link.path === "/"
+                                        ? location.pathname === "/"
+                                        : location.pathname === link.path || location.pathname.startsWith(link.path + "/");
+
+                                return (
+                                    <NavLink
+                                        key={link.path}
+                                        to={link.path}
+                                        end={link.path === "/"}
+                                        ref={(el) => (navRefs.current[link.path] = el)}
+                                        onMouseMove={(e) => handleMouseMove(e, navRefs.current[link.path])}
+                                        onMouseLeave={() => handleMouseLeave(navRefs.current[link.path])}
+                                        className={`relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${
+                                            isLinkActive ? "text-milky" : "text-dark/90 hover:text-dark"
+                                        }`}
+                                        style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), color 0.3s" }}
+                                    >
+                                        {link.name}
+                                    </NavLink>
+                                );
+                            })}
                         </div>
 
                         {/* Theme Toggle */}
