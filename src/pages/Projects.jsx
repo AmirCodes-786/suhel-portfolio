@@ -197,29 +197,42 @@ export default function Projects() {
                         </span>
                     </div>
 
-                    {/* Compact Search Bar */}
+                    {/* Compact Search Bar with enhanced visibility */}
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="relative w-full sm:w-60"
+                        className="relative w-full sm:w-64"
                     >
-                        <svg
-                            className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-dark/50 pointer-events-none"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                        <input
-                            type="text"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search stack or title..."
-                            className="w-full pl-9 pr-3 py-1.5 text-xs bg-card-bg border border-dark/[0.08] rounded-xl text-dark placeholder-dark/35 outline-none focus:border-dark/25 focus:bg-card-hover transition-all duration-300"
-                        />
+                        <div className="relative flex items-center rounded-xl border border-dark/20 bg-card-bg/90 hover:border-dark/35 focus-within:border-dark/60 focus-within:ring-1 focus-within:ring-dark/20 shadow-xs transition-all duration-200">
+                            <svg
+                                className="absolute left-3 w-4 h-4 text-dark/70 pointer-events-none"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2.2}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <input
+                                type="text"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Search stack or title..."
+                                className="w-full pl-9 pr-8 py-2 text-xs font-medium text-dark placeholder-dark/50 bg-transparent outline-none"
+                            />
+                            {search && (
+                                <button
+                                    onClick={() => setSearch("")}
+                                    className="absolute right-2.5 p-1 rounded-full text-dark/50 hover:text-dark hover:bg-dark/10 transition-colors"
+                                    aria-label="Clear search"
+                                >
+                                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                                        <path d="M2 2l8 8M10 2L2 10" />
+                                    </svg>
+                                </button>
+                            )}
+                        </div>
                     </motion.div>
                 </div>
 
