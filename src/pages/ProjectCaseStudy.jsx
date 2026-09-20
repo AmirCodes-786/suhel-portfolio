@@ -80,7 +80,7 @@ export default function ProjectCaseStudy() {
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
-                        <span>Back to Selected Work</span>
+                        <span>Back to Projects</span>
                     </Link>
 
                     <div className="flex items-center gap-2">

@@ -190,7 +190,7 @@ export default function Projects() {
                             transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                             className="text-2xl sm:text-3xl font-bold text-dark tracking-tight"
                         >
-                            Selected Work
+                            Projects
                         </motion.h1>
                         <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-dark/15 text-dark/60 bg-dark/[0.03]">
                             14 Projects
