@@ -183,7 +183,7 @@ export const projectsData = [
     id: 2,
     tier: "flagship",
     slug: "vibehub",
-    title: "VibeHub",
+    title: "VibeHub — Modern Social Network",
     badge: "Flagship Project",
     description: "Production-ready, high-performance full-stack social networking platform engineered with React 19, Vite, Tailwind CSS v4, TanStack Query v5, Express.js, MongoDB, JWT/Supabase authentication, and Cloudinary media infrastructure.",
     problem: "Modern social platforms struggle with feed instability, slow cold starts, heavy video player abstractions, and lack of resilient dual-tier authentication architectures.",

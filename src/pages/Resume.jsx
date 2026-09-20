@@ -163,7 +163,7 @@ export default function Resume() {
                             {/* Project 2 */}
                             <div className="border-l-2 border-dark/20 pl-4 py-1 space-y-1.5">
                                 <div className="flex flex-wrap items-center justify-between gap-2">
-                                    <h3 className="text-base font-bold text-dark">VibeHub</h3>
+                                    <h3 className="text-base font-bold text-dark">VibeHub — Modern Social Network</h3>
                                     <div className="flex items-center gap-2">
                                         <a href="https://vibehub-app.vercel.app" target="_blank" rel="noopener noreferrer" className="text-xs text-dark font-medium underline">
                                             Live Demo ↗
