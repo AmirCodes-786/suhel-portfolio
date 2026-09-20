@@ -46,13 +46,13 @@ export default function Projects() {
                 onClick={() => setSelectedProject(project)}
                 className={`group cursor-pointer rounded-2xl border transition-all duration-300 will-change-transform transform-gpu ${
                     isFlagship
-                        ? "p-6 md:p-8 bg-card-bg hover:bg-card-hover border-dark/15 hover:border-dark/30 shadow-md shadow-dark/[0.02]"
+                        ? "p-5 md:p-6 bg-card-bg hover:bg-card-hover border-dark/15 hover:border-dark/30 shadow-md shadow-dark/[0.02]"
                         : project.tier === "supporting"
-                        ? "p-5 md:p-7 bg-card-bg hover:bg-card-hover border-dark/[0.08] hover:border-dark/20 shadow-sm"
-                        : "p-4 md:p-6 bg-card-bg/70 hover:bg-card-hover border-dark/[0.06] hover:border-dark/15"
+                        ? "p-4 md:p-5 bg-card-bg hover:bg-card-hover border-dark/[0.08] hover:border-dark/20 shadow-sm"
+                        : "p-3.5 md:p-4 bg-card-bg/70 hover:bg-card-hover border-dark/[0.06] hover:border-dark/15"
                 }`}
             >
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
                     {/* Header Row: ID, Badge, Tier & Quick Arrow */}
                     <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-2.5">
@@ -180,47 +180,32 @@ export default function Projects() {
 
     return (
         <PageTransition>
-            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-28 pb-12">
-                {/* Section label */}
-                <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-xs tracking-[0.3em] uppercase text-dark/60 font-medium mb-6"
-                >
-                    Engineering Portfolio
-                </motion.span>
-
-                {/* Title + Search row */}
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-                    <div>
+            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-24 pb-6">
+                {/* Compact Title + Search Header Row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-2 border-b border-dark/[0.06]">
+                    <div className="flex items-center gap-3">
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark tracking-tight"
+                            transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-2xl sm:text-3xl font-bold text-dark tracking-tight"
                         >
                             Selected Work
                         </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.35, duration: 0.6 }}
-                            className="text-dark/60 text-xs sm:text-sm mt-1"
-                        >
-                            Prioritized engineering systems: full-stack architectures, real-time networking, and intelligent pipelines.
-                        </motion.p>
+                        <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-dark/15 text-dark/60 bg-dark/[0.03]">
+                            14 Projects
+                        </span>
                     </div>
 
-                    {/* Search bar */}
+                    {/* Compact Search Bar */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.45, duration: 0.6 }}
-                        className="relative w-full sm:w-64"
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="relative w-full sm:w-60"
                     >
                         <svg
-                            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/55 pointer-events-none"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-dark/50 pointer-events-none"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -232,20 +217,20 @@ export default function Projects() {
                             type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Search by stack or title..."
-                            className="w-full pl-10 pr-4 py-2.5 text-sm bg-card-bg border border-dark/[0.08] rounded-xl text-dark placeholder-dark/30 outline-none focus:border-dark/20 focus:bg-card-hover transition-all duration-300"
+                            placeholder="Search stack or title..."
+                            className="w-full pl-9 pr-3 py-1.5 text-xs bg-card-bg border border-dark/[0.08] rounded-xl text-dark placeholder-dark/35 outline-none focus:border-dark/25 focus:bg-card-hover transition-all duration-300"
                         />
                     </motion.div>
                 </div>
 
-                {/* Project Cards - scrollable area */}
+                {/* Project Cards - scrollable area maximizing screen height */}
                 <motion.div
                     key={filteredProjects.map((p) => p.id).join(",")}
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="flex-1 overflow-y-auto pr-2 space-y-8 scrollbar-thin"
-                    style={{ maxHeight: "calc(100vh - 300px)" }}
+                    className="flex-1 overflow-y-auto pr-2 space-y-6 scrollbar-thin"
+                    style={{ maxHeight: "calc(100vh - 165px)" }}
                 >
                     {filteredProjects.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-20 text-dark/60">
