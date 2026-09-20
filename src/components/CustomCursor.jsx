@@ -1,57 +1,66 @@
-import { useEffect, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-    const [position, setPosition] = useState({ x: -100, y: -100 });
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
-    const onMouseMove = useCallback((e) => {
-        setPosition({ x: e.clientX, y: e.clientY });
-        if (!isVisible) setIsVisible(true);
-    }, [isVisible]);
+    const mouseX = useMotionValue(-100);
+    const mouseY = useMotionValue(-100);
+
+    const springConfigFast = { damping: 28, stiffness: 500, mass: 0.2 };
+    const springConfigSmooth = { damping: 24, stiffness: 280, mass: 0.5 };
+
+    const dotX = useSpring(mouseX, springConfigFast);
+    const dotY = useSpring(mouseY, springConfigFast);
+
+    const ringX = useSpring(mouseX, springConfigSmooth);
+    const ringY = useSpring(mouseY, springConfigSmooth);
 
     useEffect(() => {
         // Don't show custom cursor on touch devices
         if ("ontouchstart" in window) return;
 
-        window.addEventListener("mousemove", onMouseMove);
+        const onMouseMove = (e) => {
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
+            if (!isVisible) setIsVisible(true);
+        };
+
+        const checkInteractive = (el) => {
+            if (!el) return false;
+            if (el.tagName === "A" || el.tagName === "BUTTON") return true;
+            if (el.closest("a") || el.closest("button") || el.closest('[role="button"]')) return true;
+            if (el.dataset && el.dataset.hover === "true") return true;
+            try {
+                const style = window.getComputedStyle(el);
+                if (style && style.cursor === "pointer") return true;
+            } catch (_) {}
+            return false;
+        };
 
         const handleMouseOver = (e) => {
-            const target = e.target;
-            if (
-                target.tagName === "A" ||
-                target.tagName === "BUTTON" ||
-                target.closest("a") ||
-                target.closest("button") ||
-                target.dataset.hover === "true"
-            ) {
+            if (checkInteractive(e.target)) {
                 setIsHovering(true);
             }
         };
 
         const handleMouseOut = (e) => {
-            const target = e.target;
-            if (
-                target.tagName === "A" ||
-                target.tagName === "BUTTON" ||
-                target.closest("a") ||
-                target.closest("button") ||
-                target.dataset.hover === "true"
-            ) {
+            if (checkInteractive(e.target)) {
                 setIsHovering(false);
             }
         };
 
-        document.addEventListener("mouseover", handleMouseOver);
-        document.addEventListener("mouseout", handleMouseOut);
+        window.addEventListener("mousemove", onMouseMove, { passive: true });
+        document.addEventListener("mouseover", handleMouseOver, { passive: true });
+        document.addEventListener("mouseout", handleMouseOut, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", onMouseMove);
             document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseout", handleMouseOut);
         };
-    }, [onMouseMove]);
+    }, [isVisible, mouseX, mouseY]);
 
     if ("ontouchstart" in window) return null;
 
@@ -59,25 +68,33 @@ export default function CustomCursor() {
         <>
             {/* Inner dot */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[9990] mix-blend-difference"
+                className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[9990] mix-blend-difference will-change-transform"
+                style={{
+                    x: dotX,
+                    y: dotY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                }}
                 animate={{
-                    x: position.x - 4,
-                    y: position.y - 4,
                     scale: isHovering ? 0 : 1,
                     opacity: isVisible ? 1 : 0,
                 }}
-                transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
+                transition={{ duration: 0.15 }}
             />
             {/* Outer ring */}
             <motion.div
-                className="fixed top-0 left-0 w-10 h-10 rounded-full border border-white/50 pointer-events-none z-[9990] mix-blend-difference"
+                className="fixed top-0 left-0 w-9 h-9 rounded-full border border-white/60 pointer-events-none z-[9990] mix-blend-difference will-change-transform"
+                style={{
+                    x: ringX,
+                    y: ringY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                }}
                 animate={{
-                    x: position.x - 20,
-                    y: position.y - 20,
-                    scale: isHovering ? 1.8 : 1,
+                    scale: isHovering ? 1.6 : 1,
                     opacity: isVisible ? 1 : 0,
                 }}
-                transition={{ type: "spring", stiffness: 250, damping: 20, mass: 0.8 }}
+                transition={{ duration: 0.15 }}
             />
         </>
     );

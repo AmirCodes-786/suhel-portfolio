@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "Suhel",
   tagline: "Building Intelligent Digital Systems",
   roles: [
-    "Full-Stack Developer",
-    "AI Builder",
+    "AI Full-Stack Developer",
+    "Full-Stack Engineer",
     "BCA Data Science & AI Student",
   ],
   email: "sohelmessi786@gmail.com",
@@ -14,7 +14,9 @@ export const siteConfig = {
 export const aboutContent = {
   title: "From Curiosity to Intelligent Systems",
   paragraphs: [
-    `I started building things out of curiosity — not just to follow tutorials, but to understand how real digital products work behind the screen. That curiosity quickly evolved into a deep interest in full-stack development, where I learned to design and build complete systems rather than isolated pages.
+    `I’m a BCA Data Science & AI student focused on building full-stack applications and AI-powered products. I enjoy taking ideas from concept to deployment, with a focus on practical problems, clean UX and scalable architecture.
+
+I started building things out of curiosity — not just to follow tutorials, but to understand how real digital products work behind the screen. That curiosity quickly evolved into a deep interest in full-stack development, where I learned to design and build complete systems rather than isolated pages.
 
 As I grew, my focus naturally shifted toward intelligent systems — products that don't just function, but think, adapt, and solve real problems. Today, I combine full-stack engineering with AI capabilities to create tools that go beyond basic functionality and deliver meaningful impact.
 
@@ -67,31 +69,40 @@ export const educationData = [
 ];
 
 export const skillsData = {
-  Frontend: [
-    "HTML",
-    "CSS",
+  Languages: [
     "JavaScript",
+    "Python",
+  ],
+  Frontend: [
     "React",
-    "GSAP",
     "Tailwind CSS",
+    "HTML5",
+    "CSS3",
+    "Framer Motion",
+    "GSAP",
   ],
   Backend: [
     "Node.js",
     "Express.js",
-    "MongoDB",
-  ],
-  "AI & Tools": [
-    "OpenAI API",
-    "Prompt Engineering",
     "REST APIs",
-    "Puter.js",
-    "Google AI Studio",
+    "Socket.IO",
   ],
-  Deployment: [
-    "Netlify",
+  Database: [
+    "MongoDB",
+    "MongoDB Atlas",
+  ],
+  "AI Engineering": [
+    "LLM APIs",
+    "Prompt Engineering",
+    "AI Integration",
+    "Structured Outputs",
+  ],
+  "Tools & Deployment": [
+    "Git",
+    "GitHub",
     "Vercel",
     "Render",
-    "GitHub",
+    "Postman",
   ],
 };
 
@@ -157,9 +168,135 @@ export const projectsData = [
   {
     id: 2,
     tier: "flagship",
+    slug: "vibehub",
+    title: "VibeHub",
+    badge: "Flagship Project",
+    description: "Production-ready, high-performance full-stack social networking platform engineered with React 19, Vite, Tailwind CSS v4, TanStack Query v5, Express.js, MongoDB, JWT/Supabase authentication, and Cloudinary media infrastructure.",
+    problem: "Modern social platforms struggle with feed instability, slow cold starts, heavy video player abstractions, and lack of resilient dual-tier authentication architectures.",
+    solution: "Engineered a production-ready social platform combining tab-switch feed stability, dynamic video duration stories, custom glassmorphic HTML5 video player, client-side stale-while-revalidate caching, and 37 automated backend tests.",
+    techStack: [
+      "React 19",
+      "Vite",
+      "Tailwind CSS v4",
+      "TanStack Query",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT / Supabase",
+      "Cloudinary",
+    ],
+    live: "https://vibehub-app.vercel.app",
+    github: "https://github.com/AmirCodes-786",
+    color: "#1a1a1a",
+    capabilities: [
+      "Tab-switch feed stability with zero skeleton flash using persistent TanStack Query cache",
+      "Dynamic real-duration video & image stories with audio memory and auto-advance",
+      "Custom glassmorphism VibeVideoPlayer with scrubbable buffering and keyboard controls",
+      "Canvas-based media viewer with 1x–4x smooth zoom, drag, and body scroll lock",
+      "Dual authentication architecture: Native JWT with bcrypt and Supabase OAuth fallback",
+      "37 automated backend tests across auth, posts, stories, chat, and security middleware",
+    ],
+    caseStudy: {
+      overview: {
+        role: "Full-Stack Engineer & Product Architect",
+        timeline: "Production-Ready Full-Stack System",
+        category: "Full-Stack Social Platform & Media Architecture",
+        summary: "A production-ready social networking platform engineered with React 19, TanStack Query v5, Express.js, and MongoDB, featuring dynamic video stories, tab-switch feed stability, custom media players, and 37 automated backend tests.",
+      },
+      problem: "Traditional social applications often suffer from jittery feed reloads on tab switching, rigid fixed-timer video stories that truncate content, bulky third-party video players, insecure token decoding, and cold-start session drops on modern serverless or sleeping container infrastructure.",
+      whyItMatters: "Building a reliable multimedia social platform demands granular state synchronization, resilient token validation, dynamic duration media engines, optimized client-side caching, and end-to-end automated testing to ensure uninterrupted user experiences.",
+      solution: "Engineered a modular full-stack architecture combining a React 19 frontend with TanStack Query persistent caching, a hardened Express.js REST API with dual JWT/Supabase authentication, dynamic metadata-driven video story playback, custom HTML5 media controls, and a comprehensive 37-test automated backend suite.",
+      architecture: {
+        steps: [
+          { title: "01 — Client Layer", description: "React 19 single-page application built with Vite and Tailwind CSS v4, utilizing TanStack Query v5 for user-isolated caching and optimistic mutations." },
+          { title: "02 — Auth & Token Layer", description: "Dual authentication pipeline supporting native bcrypt/JWT and Supabase OAuth with cryptographic signature verification and cold-start session persistence." },
+          { title: "03 — REST API Gateway", description: "Express.js REST service exposing protected domain routes (/api/auth, /api/posts, /api/stories, /api/users, /api/chat, /api/notifications) with Helmet and rate limiting." },
+          { title: "04 — Media Pipeline", description: "Multer and Cloudinary integration handling responsive image transformations and dynamic video upload/delivery." },
+          { title: "05 — MongoDB Persistence", description: "Mongoose ODM schemas for Users, Posts, Stories, and Messages with indexed chronological querying and atomic engagement increments." },
+        ],
+      },
+      frontend: "Engineered with React 19, Vite, and Tailwind CSS v4. Features include tab-switch feed stability (staleTime: 60s, gcTime: 10m, refetchOnWindowFocus: false), dynamic video story playback with HTML5 metadata duration detection, the custom glassmorphism VibeVideoPlayer with keyboard shortcuts (Space, M, F), and an interactive Three.js login background.",
+      backend: "Node.js and Express.js 4 modular architecture with ES Modules, protected Bearer token middleware, Helmet security headers, Express Rate Limiting, CORS whitelisting, Gzip compression, and structured Morgan request logging.",
+      database: "MongoDB with Mongoose 8 modeling User, Post, Story, and Message collections with domain validation and optimized indexing for feed generation and unread message counters.",
+      authentication: "Dual authentication architecture combining native jsonwebtoken and bcryptjs password hashing with Supabase Auth / Google OAuth support, featuring cryptographic token verification and cold-start fallback tolerance.",
+      aiWorkflow: "Not Applicable — VibeHub is engineered strictly as a high-performance full-stack social system, emphasizing distributed caching, multimedia infrastructure, and automated testing.",
+      engineeringDecisions: [
+        { decision: "Tab-Switch Feed Stability via TanStack Query", rationale: "Eliminated jarring feed reloads and skeleton flashes when switching browser tabs by setting staleTime to 60s and disabling refetchOnWindowFocus." },
+        { decision: "Real-Duration Video Story Detection", rationale: "Extracted loadedmetadata duration on HTML5 video elements instead of relying on a hardcoded 5-second timer, delivering complete story playback." },
+        { decision: "Custom VibeVideoPlayer Architecture", rationale: "Replaced heavy third-party players with a bespoke glassmorphic HTML5 video player supporting buffered ranges, custom playback speeds (0.5x–2x), and keyboard shortcuts." },
+        { decision: "37 Automated Backend Tests", rationale: "Implemented Jest, Supertest, and mongodb-memory-server suites across 11 test files to guarantee endpoint reliability, auth guards, and security compliance." },
+      ],
+      challenges: [
+        { challenge: "Cold-Start Auth Drops & Skeleton Loops", solution: "Decoupled transient network/503 cold-start errors from genuine 401 rejections, preserving user credentials while backend containers wake up." },
+        { challenge: "Insecure JWT Decoding Fallbacks", solution: "Eliminated unverified jwt.decode() routines in favor of strict cryptographic jwt.verify() enforcement across all protected endpoints." },
+      ],
+    },
+  },
+  {
+    id: 3,
+    tier: "flagship",
+    slug: "ai-resume-builder",
+    title: "AI Resume Builder",
+    badge: "Flagship Project",
+    description: "Full-stack AI-powered resume creation and formatting platform that transforms career histories into ATS-optimized, professionally formatted resumes in minutes.",
+    problem: "Crafting a professional resume is time-consuming, and job seekers struggle to structure bullet points and keywords that pass automated Applicant Tracking Systems.",
+    solution: "Built a full-stack AI-powered resume builder that auto-generates tailored professional summaries, dynamic work experience bullets, and multi-template ATS-compliant PDF exports.",
+    techStack: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "AI API", "HTML5 Canvas / PDF"],
+    live: "https://suhel-resume-builder.vercel.app",
+    github: "https://github.com/AmirCodes-786",
+    color: "#1a1a1a",
+    capabilities: [
+      "Multi-step structured resume builder with live dynamic preview synchronization",
+      "AI-driven professional summary and role-specific bullet point generation",
+      "ATS keyword optimization aligned with target roles and industry standards",
+      "Dynamic typography and section reordering engine for tailored presentation",
+      "Client-side PDF compilation with pixel-accurate layout preservation",
+    ],
+    caseStudy: {
+      overview: {
+        role: "Full-Stack Engineer & AI Builder",
+        timeline: "AI Productivity Application",
+        category: "Career Intelligence & Document Automation",
+        summary: "An end-to-end resume creation platform that combines conversational AI prompting with real-time typography templates to generate ATS-optimized, recruiter-ready resumes in minutes.",
+      },
+      problem: "Job seekers spend hours wrestling with manual document formatting, unstandardized bullet point phrasing, and opaque ATS keyword screening requirements, leading to high rejection rates before human review.",
+      whyItMatters: "Modern recruitment workflows require resumes that are both algorithmically scannable by ATS engines and visually compelling for human hiring managers. Automated structuring bridges this divide efficiently.",
+      solution: "Engineered a reactive resume builder combining a Node.js/Express backend, AI generation pipeline for role-specific phrasing, and a live React preview canvas with instantaneous PDF compilation.",
+      architecture: {
+        steps: [
+          { title: "01 — Profile Ingestion", description: "Multi-step form collecting contact info, experience, education, and target job titles." },
+          { title: "02 — AI Phrasing Engine", description: "Transforms raw user notes into action-verb-driven, metric-focused accomplishment bullets." },
+          { title: "03 — ATS Alignment", description: "Organizes content into standardized, parser-friendly section hierarchies." },
+          { title: "04 — Live Preview Canvas", description: "Synchronizes form state into a real-time responsive document preview." },
+          { title: "05 — Document Export", description: "Compiles the structured DOM into clean, downloadable print-ready PDFs." },
+        ],
+      },
+      frontend: "Built with React.js and Tailwind CSS. Features tabbed navigation across resume sections, live side-by-side preview with zoom controls, dynamic skill tag inputs, and animated form validation.",
+      backend: "Node.js and Express.js REST service formatting AI requests, enforcing schema constraints on generated content, and managing API key rate limits.",
+      database: "Client-side local storage persistence preserving drafting progress across browser sessions without requiring account creation.",
+      authentication: "Open-access client tool designed for zero-friction user onboarding with immediate drafting and export capability.",
+      aiWorkflow: "Ingests raw job titles and unformatted experience descriptions, constructs guided system prompts requiring high-impact action verbs and quantified achievements, parses the structured response, and populates the active resume draft.",
+      engineeringDecisions: [
+        { decision: "Live Canvas Synchronization with Debounced State", rationale: "Debounced state updates to prevent excessive re-renders during rapid keystrokes while maintaining fluid preview updates." },
+        { decision: "Strict Schema Enforcement for AI Bullet Points", rationale: "Implemented strict JSON structure extraction to guarantee bullet counts and prevent hallucinated formatting." },
+        { decision: "Client-Side Vector PDF Export", rationale: "Used vector-based DOM printing to ensure exported PDFs retain selectable text for ATS parser compatibility." },
+      ],
+      challenges: [
+        { challenge: "Preserving Page Budget on Long Resumes", solution: "Implemented dynamic font scaling and margin calculation to prevent orphan headings and awkward page splits." },
+        { challenge: "Inconsistent AI Verb Tenses", solution: "Formulated system prompt constraints enforcing past tense for previous roles and present tense for ongoing positions." },
+      ],
+    },
+  },
+
+  // =========================================================================
+  // TIER 2 — STRONG SUPPORTING PROJECTS (Next 4)
+  // =========================================================================
+  {
+    id: 4,
+    tier: "supporting",
     slug: "mern-realtime-chat",
     title: "MERN Real-Time Chat App",
-    badge: "Flagship Project",
+    badge: "Supporting Project",
     description: "Full-stack messaging platform engineered with Socket.IO for low-latency bi-directional event communication, MongoDB message persistence, online presence tracking, and typing indicators.",
     problem: "Most chat solutions lack true real-time capabilities or require expensive third-party services like Firebase or Pusher.",
     solution: "Built a complete chat platform from scratch using Socket.IO for instant bi-directional messaging, with online status, typing indicators, and a modern responsive interface.",
@@ -209,11 +346,11 @@ export const projectsData = [
     },
   },
   {
-    id: 3,
-    tier: "flagship",
+    id: 5,
+    tier: "supporting",
     slug: "ai-resume-analyzer",
     title: "AI Resume Analyzer",
-    badge: "Flagship Project",
+    badge: "Supporting Project",
     description: "Resume intelligence pipeline that extracts document structure, compares candidate profiles against target job descriptions, computes ATS-compatibility scores, and delivers actionable optimizations.",
     problem: "Job seekers have no way to know if their resume truly matches the requirements of specific job postings before applying.",
     solution: "Created an AI analyzer that compares resumes with job descriptions, provides a match score, highlights missing keywords, and suggests targeted improvements.",
@@ -261,25 +398,8 @@ export const projectsData = [
       ],
     },
   },
-
-  // =========================================================================
-  // TIER 2 — STRONG SUPPORTING PROJECTS (Next 3)
-  // =========================================================================
   {
-    id: 4,
-    tier: "supporting",
-    slug: "ai-resume-builder",
-    title: "AI Resume Builder",
-    description: "An intelligent resume creation platform that uses AI to generate professional, ATS-optimized resumes in minutes.",
-    problem: "Crafting a professional resume is time-consuming, and most people struggle to write content that passes Applicant Tracking Systems.",
-    solution: "Built a full-stack AI-powered resume builder that auto-generates tailored content, formats it professionally, and ensures ATS compatibility — reducing resume creation time from hours to minutes.",
-    techStack: ["React.js", "Express.js", "Node.js", "AI API"],
-    live: "https://suhel-resume-builder.vercel.app",
-    github: "https://github.com/AmirCodes-786",
-    color: "#1a1a1a",
-  },
-  {
-    id: 5,
+    id: 6,
     tier: "supporting",
     slug: "ai-code-compiler",
     title: "AI Code Compiler",
@@ -292,7 +412,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 6,
+    id: 7,
     tier: "supporting",
     slug: "ai-background-remover",
     title: "AI Background Remover",
@@ -309,7 +429,7 @@ export const projectsData = [
   // TIER 3 — SUPPORTING / OLDER PROJECTS (Remaining 8)
   // =========================================================================
   {
-    id: 7,
+    id: 8,
     tier: "older",
     slug: "instagram-caption-generator",
     title: "Instagram Caption Generator",
@@ -322,7 +442,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 8,
+    id: 9,
     tier: "older",
     slug: "ai-text-summarizer",
     title: "AI Text Summarizer",
@@ -335,7 +455,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 9,
+    id: 10,
     tier: "older",
     slug: "ai-youtube-script-writer",
     title: "AI YouTube Script Writer",
@@ -348,7 +468,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 10,
+    id: 11,
     tier: "older",
     slug: "ai-thumbnail-generator",
     title: "AI Thumbnail Generator",
@@ -361,7 +481,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 11,
+    id: 12,
     tier: "older",
     slug: "ai-link-shortener",
     title: "AI Link Shortener",
@@ -374,7 +494,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 12,
+    id: 13,
     tier: "older",
     slug: "suhel-music",
     title: "Suhel Music",
@@ -387,7 +507,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 13,
+    id: 14,
     tier: "older",
     slug: "personal-portfolio",
     title: "Personal Portfolio",
@@ -400,7 +520,7 @@ export const projectsData = [
     color: "#1a1a1a",
   },
   {
-    id: 14,
+    id: 15,
     tier: "older",
     slug: "ai-chatbot",
     title: "AI Chatbot",
@@ -416,24 +536,24 @@ export const projectsData = [
 
 export const achievementsData = [
   {
-    number: 14,
+    number: 15,
     suffix: "+",
-    label: "AI Projects Built",
+    label: "Shipped Applications",
   },
   {
-    number: 14,
+    number: 15,
     suffix: "+",
-    label: "Deployed Applications",
+    label: "Cloud Deployments",
   },
   {
-    number: 1000,
-    suffix: "+",
-    label: "Hours of Coding",
+    number: 3,
+    suffix: "",
+    label: "Flagship Architectures",
   },
   {
     number: 100,
     suffix: "%",
-    label: "Continuous Learner",
+    label: "Open Source Repositories",
   },
 ];
 

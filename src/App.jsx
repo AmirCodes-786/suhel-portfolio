@@ -17,18 +17,14 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Resume = lazy(() => import("./pages/Resume"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 
-// Preload all routes in background during idle time for instant navigation
-function preloadAllRoutes() {
-  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
+// Preload high-probability routes during idle time for instant navigation
+function preloadKeyRoutes() {
+  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
   idle(() => {
-    import("./pages/Home");
     import("./pages/About");
-    import("./pages/Education");
-    import("./pages/Skills");
     import("./pages/Projects");
-    import("./pages/ProjectCaseStudy");
-    import("./pages/Achievements");
-    import("./pages/Contact");
+    import("./pages/Skills");
+    import("./pages/Resume");
   });
 }
 
@@ -80,8 +76,8 @@ export default function App() {
 
   const handleLoaderComplete = useCallback(() => {
     setIsLoading(false);
-    // Preload all route chunks in background after loader finishes
-    preloadAllRoutes();
+    // Preload key route chunks in background after loader finishes
+    preloadKeyRoutes();
   }, []);
 
   return (

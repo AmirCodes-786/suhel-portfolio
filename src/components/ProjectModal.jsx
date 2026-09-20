@@ -8,20 +8,18 @@ const backdropVariants = {
 };
 
 const modalVariants = {
-    hidden: { opacity: 0, scale: 0.92, y: 40, filter: "blur(10px)" },
+    hidden: { opacity: 0, scale: 0.94, y: 30 },
     visible: {
         opacity: 1,
         scale: 1,
         y: 0,
-        filter: "blur(0px)",
-        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
     },
     exit: {
         opacity: 0,
         scale: 0.95,
-        y: 20,
-        filter: "blur(6px)",
-        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+        y: 15,
+        transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
     },
 };
 
@@ -40,7 +38,7 @@ export default function ProjectModal({ project, onClose }) {
                 >
                     {/* Backdrop */}
                     <div
-                        className="absolute inset-0 bg-dark/40 backdrop-blur-sm"
+                        className="absolute inset-0 bg-dark/40 backdrop-blur-sm cursor-pointer"
                         onClick={onClose}
                     />
 
@@ -50,13 +48,13 @@ export default function ProjectModal({ project, onClose }) {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="relative w-full max-w-2xl max-h-full m-auto overflow-y-auto bg-milky rounded-3xl p-6 md:p-12 shadow-2xl z-10"
+                        className="relative w-full max-w-2xl max-h-full m-auto overflow-y-auto bg-milky rounded-3xl p-6 md:p-12 shadow-2xl z-10 will-change-transform transform-gpu"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close button */}
                         <button
                             onClick={onClose}
-                            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-dark/5 hover:bg-dark/10 transition-colors text-dark/90 hover:text-dark"
+                            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-dark/5 hover:bg-dark/15 transition-all text-dark/90 hover:text-dark cursor-pointer hover:scale-110 active:scale-90 z-20"
                             aria-label="Close modal"
                         >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -198,7 +196,7 @@ export default function ProjectModal({ project, onClose }) {
                                     </a>
                                 )}
 
-                                {project.tier === "flagship" && project.slug && (
+                                {(project.tier === "flagship" || project.caseStudy) && project.slug && (
                                     <Link
                                         to={`/projects/${project.slug}`}
                                         onClick={onClose}

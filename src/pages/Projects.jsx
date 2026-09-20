@@ -193,7 +193,7 @@ export default function Projects() {
                             Projects
                         </motion.h1>
                         <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full border border-dark/15 text-dark/60 bg-dark/[0.03]">
-                            14 Projects
+                            {projectsData.length} Projects
                         </span>
                     </div>
 

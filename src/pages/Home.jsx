@@ -75,15 +75,15 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        className="mb-6"
+                        className="mb-5"
                     >
-                        <span className="text-xs tracking-[0.3em] uppercase text-white font-medium">
-                            Hi, I’m Suhel Ansari —
+                        <span className="text-xs tracking-[0.25em] uppercase text-white/90 font-medium font-mono">
+                            Hi, I’m Suhel Ansari — AI Full-Stack Developer
                         </span>
                     </motion.div>
 
                     {/* Heading with word reveal */}
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-8 overflow-hidden">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-6 overflow-hidden">
                         {["Building", "Intelligent", "Digital", "Systems."].map((word, i) => (
                             <motion.span
                                 key={i}
@@ -101,14 +101,24 @@ export default function Home() {
                         ))}
                     </h1>
 
-                    {/* Subtext */}
+                    {/* Supporting sentence */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.0, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-base sm:text-lg text-white/85 leading-relaxed max-w-xl mb-6 font-normal"
+                    >
+                        I build AI-powered full-stack applications that turn real-world problems into practical digital products.
+                    </motion.p>
+
+                    {/* Subtext roles */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.2, duration: 0.7 }}
-                        className="mb-10"
+                        className="mb-8"
                     >
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
+                        <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-white/75">
                             {siteConfig.roles.map((role, i) => (
                                 <span key={i} className="flex items-center gap-3">
                                     {i > 0 && (

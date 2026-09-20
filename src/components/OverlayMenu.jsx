@@ -84,6 +84,26 @@ export default function OverlayMenu({ isOpen, onClose }) {
                                 </NavLink>
                             </motion.div>
                         ))}
+
+                        <motion.div
+                            variants={linkVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            custom={navLinks.length}
+                            className="pt-3"
+                        >
+                            <NavLink
+                                to="/resume"
+                                onClick={onClose}
+                                className="px-6 py-2.5 rounded-full bg-dark text-milky text-lg md:text-xl font-medium tracking-wide flex items-center gap-2 hover:opacity-90 transition-opacity"
+                            >
+                                <span>Resume</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M7 17l9.2-9.2M17 17V7H7" />
+                                </svg>
+                            </NavLink>
+                        </motion.div>
                     </nav>
 
                     <motion.p
