@@ -144,9 +144,9 @@ export default function Resume() {
                             {/* Project 1 */}
                             <div className="border-l-2 border-dark/20 pl-4 py-1 space-y-1.5">
                                 <div className="flex flex-wrap items-center justify-between gap-2">
-                                    <h3 className="text-base font-bold text-dark">AI Quiz Generator (SaaS)</h3>
+                                    <h3 className="text-base font-bold text-dark">QuizForge AI</h3>
                                     <div className="flex items-center gap-2">
-                                        <a href="https://suhel-ai-quiz.vercel.app" target="_blank" rel="noopener noreferrer" className="text-xs text-dark font-medium underline">
+                                        <a href="https://quizforge-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-xs text-dark font-medium underline">
                                             Live Demo ↗
                                         </a>
                                         <Link to="/projects/ai-quiz-generator" className="text-xs text-dark/70 hover:text-dark">
@@ -154,9 +154,9 @@ export default function Resume() {
                                         </Link>
                                     </div>
                                 </div>
-                                <p className="text-xs text-dark/60 font-mono">React · Node.js · Express · MongoDB · Clerk Auth · AI API</p>
+                                <p className="text-xs text-dark/60 font-mono">React 19 · Node.js · Express · Socket.io · MongoDB Atlas · Gemini 2.0 · Groq LPU · Clerk</p>
                                 <p className="text-xs md:text-sm text-dark/80 leading-relaxed">
-                                    Engineered an end-to-end assessment SaaS featuring Clerk authentication, MongoDB cloud persistence, multi-format AI question generation, timed exam modes, and real-time performance analytics.
+                                    Next-gen multi-modal AI assessment platform supporting note/PDF/YouTube ingestion, Bloom’s Taxonomy calibration, real-time Socket.io battle arena, 3D flashcards, and public verifiable certificates.
                                 </p>
                             </div>
 
