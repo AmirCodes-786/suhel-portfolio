@@ -131,7 +131,7 @@ export const projectsData = [
       "Clerk Auth",
       "Recharts",
     ],
-    live: "https://quizforge-ai.vercel.app/",
+    live: "https://suhel-ai-quiz.vercel.app",
     github: "https://github.com/AmirCodes-786/suhel-ai-quiz",
     color: "#1a1a1a",
     capabilities: [

@@ -218,7 +218,7 @@ export default function Resume() {
                             <ul className="list-disc ml-5 space-y-1 mt-1 text-[13px] sm:text-[13.5px] text-black/90 leading-snug">
                                 <li>
                                     Engineered <strong>QuizForge AI</strong> (
-                                    <a href="https://quizforge-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">Live</a>
+                                    <a href="https://suhel-ai-quiz.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">Live</a>
                                     {" | "}
                                     <a href="https://github.com/AmirCodes-786/suhel-ai-quiz" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">GitHub</a>
                                     ), a distributed SaaS assessment platform, leveraging Vercel, Render, and MongoDB Atlas to apply scalable cloud computing architectures
