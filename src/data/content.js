@@ -71,7 +71,7 @@ export const educationData = [
 export const skillsData = {
   Languages: [
     "JavaScript",
-    "Python",
+    "Java",
   ],
   Frontend: [
     "React",

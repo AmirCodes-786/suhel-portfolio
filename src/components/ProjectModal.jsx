@@ -200,6 +200,8 @@ export default function ProjectModal({ project, onClose }) {
                                     <Link
                                         to={`/projects/${project.slug}`}
                                         onClick={onClose}
+                                        onMouseEnter={() => import("../pages/ProjectCaseStudy")}
+                                        onFocus={() => import("../pages/ProjectCaseStudy")}
                                         className="flex items-center gap-2 px-5 py-2.5 border border-dark/20 bg-dark/[0.04] rounded-full text-sm font-medium text-dark hover:bg-dark hover:text-milky transition-all"
                                     >
                                         <span>Read Case Study</span>

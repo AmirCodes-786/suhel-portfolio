@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import { projectsData } from "../data/content";
@@ -8,22 +8,22 @@ const staggerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+        transition: { staggerChildren: 0.04, delayChildren: 0.04 },
     },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
     },
 };
 
 export default function ProjectCaseStudy() {
     const { slug } = useParams();
-    const navigate = useNavigate();
+    const containerRef = useRef(null);
 
     // Find the project matching the slug
     const project = projectsData.find((p) => p.slug === slug);
@@ -41,6 +41,14 @@ export default function ProjectCaseStudy() {
             document.title = "Suhel — Full-Stack Developer & AI Builder";
         };
     }, [project]);
+
+    // Reset scroll to top immediately when slug changes
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.scrollTop = 0;
+        }
+        window.scrollTo(0, 0);
+    }, [slug]);
 
     if (!project || !project.caseStudy) {
         return (
@@ -64,7 +72,7 @@ export default function ProjectCaseStudy() {
 
     return (
         <PageTransition>
-            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-28 pb-20 overflow-y-auto scrollbar-thin">
+            <div ref={containerRef} className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col h-full pt-28 pb-20 overflow-y-auto scrollbar-thin">
                 {/* Back to Projects Bar */}
                 <div className="flex items-center justify-between gap-4 mb-8 pb-4 border-b border-dark/[0.08]">
                     <Link
@@ -440,8 +448,8 @@ export default function ProjectCaseStudy() {
                     {/* Flagship Navigation Bar */}
                     <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-dark/[0.08]">
                         {prevFlagship ? (
-                            <button
-                                onClick={() => navigate(`/projects/${prevFlagship.slug}`)}
+                            <Link
+                                to={`/projects/${prevFlagship.slug}`}
                                 className="inline-flex items-center gap-2 text-xs md:text-sm font-medium text-dark/70 hover:text-dark transition-colors group cursor-pointer"
                             >
                                 <svg
@@ -454,12 +462,12 @@ export default function ProjectCaseStudy() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                 </svg>
                                 <span>Previous: {prevFlagship.title}</span>
-                            </button>
+                            </Link>
                         ) : <div />}
 
                         {nextFlagship ? (
-                            <button
-                                onClick={() => navigate(`/projects/${nextFlagship.slug}`)}
+                            <Link
+                                to={`/projects/${nextFlagship.slug}`}
                                 className="inline-flex items-center gap-2 text-xs md:text-sm font-medium text-dark/70 hover:text-dark transition-colors group cursor-pointer"
                             >
                                 <span>Next: {nextFlagship.title}</span>
@@ -472,7 +480,7 @@ export default function ProjectCaseStudy() {
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
-                            </button>
+                            </Link>
                         ) : <div />}
                     </motion.div>
                 </motion.div>

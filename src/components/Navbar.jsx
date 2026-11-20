@@ -1,53 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { navLinks } from "../data/content";
 import OverlayMenu from "./OverlayMenu";
 import PremiumThemeToggle from "./ThemeToggle";
 
+// Track whether the app has completed its initial intro animation
+let hasCompletedInitialLoad = false;
+
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(() => {
-        // Initialize from local storage, defaulting to light mode (false) if not set
         if (typeof window !== "undefined") {
             return localStorage.theme === "dark";
         }
         return false;
     });
-    const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
-    const navRefs = useRef({});
     const location = useLocation();
 
-    // Update pill position on route change and window resize
+    // After initial mount, ensure any re-mount has zero animation delay
+    const headerDelay = hasCompletedInitialLoad ? 0 : 2.2;
     useEffect(() => {
-        const getActiveNavPath = (pathname) => {
-            if (navRefs.current[pathname]) return pathname;
-            const matchingLink = navLinks.find(
-                (link) => link.path !== "/" && pathname.startsWith(link.path)
-            );
-            return matchingLink ? matchingLink.path : null;
-        };
-
-        const updatePill = () => {
-            const activePath = getActiveNavPath(location.pathname);
-            const activeEl = activePath ? navRefs.current[activePath] : null;
-            if (activeEl) {
-                const { offsetLeft, offsetWidth } = activeEl;
-                setPillStyle({ left: offsetLeft, width: offsetWidth, opacity: 1 });
-            } else {
-                setPillStyle((prev) => ({ ...prev, opacity: 0 }));
-            }
-        };
-
-        updatePill();
-        // Small delay to ensure refs are populated on initial load
-        const timer = setTimeout(updatePill, 60);
-        window.addEventListener("resize", updatePill);
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener("resize", updatePill);
-        };
-    }, [location.pathname]);
+        hasCompletedInitialLoad = true;
+    }, []);
 
     // Handle theme switching and saving to localStorage
     useEffect(() => {
@@ -60,26 +35,12 @@ export default function Navbar() {
         }
     }, [isDarkMode]);
 
-    // Magnetic hover effect
-    const handleMouseMove = (e, el) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-    };
-
-    const handleMouseLeave = (el) => {
-        if (!el) return;
-        el.style.transform = "translate(0, 0)";
-    };
-
     return (
         <>
             <motion.header
-                initial={{ y: -100, opacity: 0 }}
+                initial={{ y: hasCompletedInitialLoad ? 0 : -100, opacity: hasCompletedInitialLoad ? 1 : 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 2.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: headerDelay, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[94%] max-w-5xl"
             >
                 <nav className="glass rounded-full px-6 py-3 flex items-center justify-between shadow-lg shadow-dark/[0.03] will-change-transform transform-gpu">
@@ -92,16 +53,8 @@ export default function Navbar() {
                     </NavLink>
 
                     <div className="flex items-center gap-6">
-                        {/* Desktop Links */}
+                        {/* Desktop Links with rock-solid shared layout pill */}
                         <div className="hidden lg:flex items-center gap-1 relative">
-                            {/* Sliding pill indicator */}
-                            <motion.div
-                                className="absolute h-8 bg-dark rounded-full z-0 will-change-transform transform-gpu"
-                                animate={{ left: pillStyle.left - 8, width: pillStyle.width + 16, opacity: pillStyle.opacity }}
-                                transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                                style={{ top: "50%", translateY: "-50%" }}
-                            />
-
                             {navLinks.map((link) => {
                                 const isLinkActive =
                                     link.path === "/"
@@ -113,15 +66,20 @@ export default function Navbar() {
                                         key={link.path}
                                         to={link.path}
                                         end={link.path === "/"}
-                                        ref={(el) => (navRefs.current[link.path] = el)}
-                                        onMouseMove={(e) => handleMouseMove(e, navRefs.current[link.path])}
-                                        onMouseLeave={() => handleMouseLeave(navRefs.current[link.path])}
-                                        className={`relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${
-                                            isLinkActive ? "text-milky" : "text-dark/90 hover:text-dark"
+                                        className={`relative px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 rounded-full select-none outline-none ${
+                                            isLinkActive ? "text-milky" : "text-dark/80 hover:text-dark hover:bg-dark/[0.04]"
                                         }`}
-                                        style={{ transition: "transform 0.2s cubic-bezier(0.22,1,0.36,1), color 0.3s" }}
                                     >
-                                        {link.name}
+                                        {isLinkActive && (
+                                            <motion.span
+                                                layoutId="navbar-active-pill"
+                                                className="absolute inset-0 bg-dark rounded-full -z-0"
+                                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">
+                                            {link.name}
+                                        </span>
                                     </NavLink>
                                 );
                             })}

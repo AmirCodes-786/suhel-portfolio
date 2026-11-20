@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, useEffect, useCallback } from "react";
+import { useState, lazy, Suspense, useCallback } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
@@ -19,10 +19,11 @@ const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 
 // Preload high-probability routes during idle time for instant navigation
 function preloadKeyRoutes() {
-  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
+  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 800));
   idle(() => {
     import("./pages/About");
     import("./pages/Projects");
+    import("./pages/ProjectCaseStudy");
     import("./pages/Skills");
     import("./pages/Resume");
   });
@@ -63,7 +64,9 @@ function Layout() {
 
   return (
     <>
-      {!hideNavbar && <Navbar />}
+      <div className={`transition-opacity duration-300 ${hideNavbar ? "pointer-events-none opacity-0 select-none" : "opacity-100"}`}>
+        <Navbar />
+      </div>
       <main className="h-full">
         <AnimatedRoutes />
       </main>

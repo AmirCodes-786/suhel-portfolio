@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
@@ -27,6 +27,11 @@ const cardVariants = {
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [search, setSearch] = useState("");
+
+    // Preload Case Study chunk as soon as Projects page is visited
+    useEffect(() => {
+        import("./ProjectCaseStudy");
+    }, []);
 
     const filteredProjects = projectsData.filter((p) =>
         p.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -164,6 +169,8 @@ export default function Projects() {
                         {isFlagship && project.slug && (
                             <Link
                                 to={`/projects/${project.slug}`}
+                                onMouseEnter={() => import("./ProjectCaseStudy")}
+                                onFocus={() => import("./ProjectCaseStudy")}
                                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-dark/20 bg-dark/[0.04] text-dark rounded-full text-xs font-medium hover:bg-dark hover:text-milky transition-all"
                             >
                                 <span>Read Case Study</span>

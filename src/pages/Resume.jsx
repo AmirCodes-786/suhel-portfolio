@@ -297,13 +297,13 @@ export default function Resume() {
                         </h2>
                         <div className="space-y-1 text-[13px] sm:text-[13.5px] leading-snug text-black/90">
                             <div>
-                                <strong className="text-black">Languages:</strong> JavaScript, Python, Java, C, C++, SQL, HTML, CSS
+                                <strong className="text-black">Languages:</strong> JavaScript, Java, SQL, HTML, CSS
                             </div>
                             <div>
-                                <strong className="text-black">Frameworks:</strong> React, React 19, Node.js, Express.js, Vite, Tailwind CSS, Framer Motion, GSAP, Socket.io
+                                <strong className="text-black">Frameworks:</strong> React, Node.js, Express.js, Vite, Tailwind CSS, Framer Motion, GSAP, Socket.io
                             </div>
                             <div>
-                                <strong className="text-black">Developer Tools:</strong> Git, GitHub, Docker, VS Code, Vercel, Render, MongoDB Atlas
+                                <strong className="text-black">Developer Tools:</strong> Git, GitHub, VS Code, Vercel, Render, MongoDB Atlas
                             </div>
                             <div>
                                 <strong className="text-black">Libraries:</strong> Mongoose, Axios, Recharts, React Router DOM, Lucide React, Three.js, PDF.js
