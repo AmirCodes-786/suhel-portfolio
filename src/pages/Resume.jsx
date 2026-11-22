@@ -181,6 +181,16 @@ export default function Resume() {
                         </div>
                     </div>
 
+                    {/* PROFESSIONAL SUMMARY */}
+                    <div className="mb-4">
+                        <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
+                            PROFESSIONAL SUMMARY
+                        </h2>
+                        <p className="text-[13px] sm:text-[13.5px] text-black/90 leading-snug">
+                            Second-year BCA student specializing in Data Science &amp; AI, who spends most free time shipping side projects. Proficient in full-stack MERN development, real-time systems, and AI API integrations. I learn best by building — most of what I know came from actually finishing something.
+                        </p>
+                    </div>
+
                     {/* EDUCATION */}
                     <div className="mb-4">
                         <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
