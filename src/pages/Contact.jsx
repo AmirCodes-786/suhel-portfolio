@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import { siteConfig } from "../data/content";
+import SALogo from "../components/SALogo";
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -174,6 +175,20 @@ export default function Contact() {
                         ))}
                     </motion.div>
                 </div>
+
+                {/* Footer Brand Identity Touchpoint */}
+                <motion.footer
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8, duration: 0.6 }}
+                    className="mt-16 pt-8 border-t border-dark/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-dark/60 dark:text-milky/60 select-none"
+                >
+                    <div className="flex items-center gap-2.5">
+                        <SALogo size={24} interactive={false} />
+                        <span className="font-medium tracking-tight">Designed &amp; Engineered by Suhel Ansari</span>
+                    </div>
+                    <span className="font-mono text-[11px] text-dark/40 dark:text-milky/40">© {new Date().getFullYear()} SA Monogram • All Rights Reserved</span>
+                </motion.footer>
             </div>
         </PageTransition>
     );

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "../data/content";
+import SALogo from "./SALogo";
 
 const overlayVariants = {
     hidden: { clipPath: "inset(0 0 100% 0)" },
@@ -63,6 +64,15 @@ export default function OverlayMenu({ isOpen, onClose }) {
                     </motion.button>
 
                     <nav className="flex flex-col items-center gap-6 md:gap-8">
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="mb-2"
+                        >
+                            <SALogo size={48} priority={true} />
+                        </motion.div>
                         {navLinks.map((link, i) => (
                             <motion.div
                                 key={link.path}
