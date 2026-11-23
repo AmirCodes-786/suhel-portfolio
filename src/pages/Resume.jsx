@@ -56,7 +56,7 @@ export default function Resume() {
 
     return (
         <PageTransition>
-            <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col h-full pt-20 sm:pt-24 pb-20 overflow-y-auto scrollbar-thin">
+            <div className="resume-page-wrapper w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col h-full pt-20 sm:pt-24 pb-20 overflow-y-auto scrollbar-thin print:p-0 print:m-0 print:h-auto print:overflow-visible print:max-w-none">
                 {/* Action Bar (hidden on print) */}
                 <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-dark/[0.08]">
                     <Link
@@ -149,193 +149,234 @@ export default function Resume() {
                 {/* ========================================================================= */}
                 <div
                     id="resume-document"
-                    className="w-full bg-white text-black p-6 sm:p-10 md:p-14 rounded-xl shadow-xl border border-black/10 transition-all font-serif selection:bg-blue-100 selection:text-black print:p-0 print:m-0 print:border-none print:shadow-none print:rounded-none"
-                    style={{
-                        fontFamily: "'Times New Roman', Times, 'Computer Modern', Georgia, serif",
-                        lineHeight: 1.28,
-                    }}
+                    className="w-full max-w-[8.5in] mx-auto bg-white text-black p-6 sm:p-10 md:p-12 rounded-xl shadow-xl border border-black/10 font-serif selection:bg-blue-100 selection:text-black"
                 >
-                    {/* Header */}
-                    <div className="text-center mb-4">
-                        <h1 className="text-2xl sm:text-3xl md:text-[32px] font-bold tracking-tight text-black mb-1">
-                            Suhel Ansari
-                        </h1>
-                        <div className="text-[13px] sm:text-[14px] text-black/85 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                            <a href="tel:6204450258" className="hover:underline text-black">6204450258</a>
-                            <span className="text-black/40">|</span>
-                            <a href={`mailto:${siteConfig.email}`} className="text-[#0b57d0] underline hover:text-[#083c91]">
-                                {siteConfig.email}
-                            </a>
-                            <span className="text-black/40">|</span>
-                            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline hover:text-[#083c91]">
-                                LinkedIn
-                            </a>
-                            <span className="text-black/40">|</span>
-                            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline hover:text-[#083c91]">
-                                GitHub
-                            </a>
-                            <span className="text-black/40">|</span>
-                            <a href="https://suhel-portfolio.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline hover:text-[#083c91]">
-                                Portfolio
-                            </a>
-                        </div>
+                    {/* HEADER */}
+                    <h1 className="resume-name">Suhel Ansari</h1>
+                    <div className="resume-contact-info">
+                        <a href="tel:6204450258" style={{ color: "#000", textDecoration: "none" }}>6204450258</a>
+                        {" | "}
+                        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+                        {" | "}
+                        <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        {" | "}
+                        <a href={siteConfig.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                        {" | "}
+                        <a href="https://suhel-developer-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">Portfolio</a>
                     </div>
 
                     {/* EDUCATION */}
-                    <div className="mb-4">
-                        <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
-                            EDUCATION
-                        </h2>
-                        <div className="space-y-0.5">
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13.5px] sm:text-[14px]">
-                                <span className="font-bold text-black">ICFAI University, Jharkhand</span>
-                                <span className="text-[13px] sm:text-[13.5px] text-black">Ranchi, Jharkhand</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13px] sm:text-[13.5px]">
-                                <span className="italic text-black/90">Bachelor of Computer Applications (BCA), Data Science &amp; Artificial Intelligence</span>
-                                <span className="text-black/85">Aug. 2024 – May 2027 (Expected)</span>
-                            </div>
-                            <div className="text-[13px] italic text-black/85">
-                                Cumulative CGPA: 8.5+
-                            </div>
+                    <h2 className="resume-section-title">Education</h2>
+                    <div className="resume-entry">
+                        <div className="resume-flex-row resume-entry-header">
+                            <span className="bold-text">ICFAI University, Jharkhand</span>
+                            <span>Ranchi, Jharkhand</span>
                         </div>
+                        <div className="resume-flex-row italic-text">
+                            <span style={{ paddingRight: "15px" }}>Bachelor of Computer Applications (BCA), Data Science &amp; Artificial Intelligence</span>
+                            <span style={{ whiteSpace: "nowrap" }}>Aug. 2024 &ndash; May 2027 (Expected)</span>
+                        </div>
+                        <div className="italic-text">Cumulative CGPA: 8.5+</div>
                     </div>
 
                     {/* EXPERIENCE */}
-                    <div className="mb-4">
-                        <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
-                            EXPERIENCE
-                        </h2>
-                        <div className="space-y-1">
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13.5px] sm:text-[14px]">
-                                <span className="font-bold text-black">Cloud Computing Intern</span>
-                                <span className="text-[13px] sm:text-[13.5px] text-black">June 2026 – July 2026</span>
-                            </div>
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13px] sm:text-[13.5px]">
-                                <span className="italic text-black/90">BIT Mesra ISVE (Indian Society for VLSI Education)</span>
-                                <span className="text-black/85">Jharkhand, India</span>
-                            </div>
-                            <ul className="list-disc ml-5 space-y-1 mt-1 text-[13px] sm:text-[13.5px] text-black/90 leading-snug">
-                                <li>
-                                    Engineered <strong>QuizForge AI</strong> (
-                                    <a href="https://suhel-ai-quiz.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">Live</a>
-                                    {" | "}
-                                    <a href="https://github.com/AmirCodes-786/suhel-ai-quiz" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">GitHub</a>
-                                    ), a distributed SaaS assessment platform, leveraging Vercel, Render, and MongoDB Atlas to apply scalable cloud computing architectures
-                                </li>
-                                <li>
-                                    Architected a fault-tolerant AI generation engine integrating Google Gemini with Groq as a fallback, automating dynamic quiz creation from documents, YouTube URLs, and web links
-                                </li>
-                                <li>
-                                    Developed real-time multiplayer learning arenas and a 3D Flashcard Studio using Socket.io, ensuring low-latency data synchronization for active users
-                                </li>
-                                <li>
-                                    Implemented secure user authentication alongside an automated performance tracking system that delivers personalized AI study plans and mastery analytics
-                                </li>
-                            </ul>
+                    <h2 className="resume-section-title">Experience</h2>
+                    <div className="resume-entry">
+                        <div className="resume-flex-row resume-entry-header">
+                            <span className="bold-text">Cloud Computing Intern</span>
+                            <span>June 2026 &ndash; July 2026</span>
                         </div>
+                        <div className="resume-flex-row italic-text">
+                            <span>BIT Mesra ISVE (Indian Society for VLSI Education)</span>
+                            <span>Jharkhand, India</span>
+                        </div>
+                        <ul className="resume-bullets">
+                            <li>
+                                Engineered <strong>QuizForge AI</strong> (<a href="https://suhel-ai-quiz.vercel.app" target="_blank" rel="noopener noreferrer"><strong>Live</strong></a> | <a href="https://github.com/AmirCodes-786/suhel-ai-quiz" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>), a distributed SaaS assessment platform, leveraging Vercel, Render, and MongoDB Atlas to apply scalable cloud computing architectures
+                            </li>
+                            <li>
+                                Architected a fault-tolerant AI generation engine integrating Google Gemini with Groq as a fallback, automating dynamic quiz creation from documents, YouTube URLs, and web links
+                            </li>
+                            <li>
+                                Developed real-time multiplayer learning arenas and a 3D Flashcard Studio using Socket.io, ensuring low-latency data synchronization for active users
+                            </li>
+                            <li>
+                                Implemented secure user authentication alongside an automated performance tracking system that delivers personalized AI study plans and mastery analytics
+                            </li>
+                        </ul>
                     </div>
 
                     {/* PROJECTS */}
-                    <div className="mb-4">
-                        <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
-                            PROJECTS
-                        </h2>
-
-                        {/* Project 1: VibeHub */}
-                        <div className="mb-3">
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13.5px] sm:text-[14px]">
-                                <div>
-                                    <span className="font-bold text-black">VibeHub</span> (
-                                    <a href="https://vibehub-app.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">Live</a>
-                                    {" | "}
-                                    <a href="https://github.com/AmirCodes-786" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">GitHub</a>
-                                    ) | <span className="italic text-[13px] font-normal">React 19, Vite, Node.js, Express.js, MongoDB, Socket.io, JWT, Framer Motion</span>
-                                </div>
-                                <span className="text-[13px] sm:text-[13.5px] text-black">2026</span>
-                            </div>
-                            <ul className="list-disc ml-5 space-y-1 mt-1 text-[13px] sm:text-[13.5px] text-black/90 leading-snug">
-                                <li>
-                                    Shipped a production-ready social networking application featuring threaded comments, 24-hour stories, and real-time direct messaging
-                                </li>
-                                <li>
-                                    Fortified backend architecture using JWT, bcryptjs, CORS protection, and rate limiting to ensure maximum data security
-                                </li>
-                                <li>
-                                    Validated system integrity and API reliability by implementing automated backend testing suites using Jest and Supertest
-                                </li>
-                            </ul>
+                    <h2 className="resume-section-title">Projects</h2>
+                    
+                    <div className="resume-entry">
+                        <div className="resume-flex-row resume-entry-header">
+                            <span className="bold-text">
+                                VibeHub <span style={{ fontWeight: "normal" }}>(<a href="https://vibehub-app.vercel.app" target="_blank" rel="noopener noreferrer">Live</a> | <a href="https://github.com/AmirCodes-786/suhel-social-media" target="_blank" rel="noopener noreferrer">GitHub</a>)</span> <span style={{ fontWeight: "normal", fontStyle: "italic" }}>| React 19, Vite, Node.js, Express.js, MongoDB, Socket.io, JWT, Framer Motion</span>
+                            </span>
+                            <span>2026</span>
                         </div>
+                        <ul className="resume-bullets">
+                            <li>Shipped a production-ready social networking application featuring threaded comments, 24-hour stories, and real-time direct messaging</li>
+                            <li>Fortified backend architecture using JWT, bcryptjs, CORS protection, and rate limiting to ensure maximum data security</li>
+                            <li>Validated system integrity and API reliability by implementing automated backend testing suites using Jest and Supertest</li>
+                        </ul>
+                    </div>
 
-                        {/* Project 2: AI Resume Builder */}
-                        <div>
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-[13.5px] sm:text-[14px]">
-                                <div>
-                                    <span className="font-bold text-black">AI Resume Builder</span> (
-                                    <a href="https://suhel-resume-builder.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">Live</a>
-                                    {" | "}
-                                    <a href="https://github.com/AmirCodes-786" target="_blank" rel="noopener noreferrer" className="text-[#0b57d0] underline">GitHub</a>
-                                    ) | <span className="italic text-[13px] font-normal">MERN, React, Node.js, Express.js, MongoDB, AI, PDF Export</span>
-                                </div>
-                                <span className="text-[13px] sm:text-[13.5px] text-black">2026</span>
-                            </div>
-                            <ul className="list-disc ml-5 space-y-1 mt-1 text-[13px] sm:text-[13.5px] text-black/90 leading-snug">
-                                <li>
-                                    Developed a comprehensive MERN web application featuring a real-time visual editor and an AI-powered writing assistant
-                                </li>
-                                <li>
-                                    Integrated high-fidelity PDF rendering and export capabilities to instantly generate professional, shareable documents
-                                </li>
-                            </ul>
+                    <div className="resume-entry">
+                        <div className="resume-flex-row resume-entry-header">
+                            <span className="bold-text">
+                                AI Resume Builder <span style={{ fontWeight: "normal" }}>(<a href="https://suhel-resume-builder.vercel.app" target="_blank" rel="noopener noreferrer">Live</a> | <a href="https://github.com/AmirCodes-786/suhel-ai-resume-builder" target="_blank" rel="noopener noreferrer">GitHub</a>)</span> <span style={{ fontWeight: "normal", fontStyle: "italic" }}>| MERN, React, Node.js, Express.js, MongoDB, AI, PDF Export</span>
+                            </span>
+                            <span>2026</span>
                         </div>
+                        <ul className="resume-bullets">
+                            <li>Developed a comprehensive MERN web application featuring a real-time visual editor and an AI-powered writing assistant</li>
+                            <li>Integrated high-fidelity PDF rendering and export capabilities to instantly generate professional, shareable documents</li>
+                        </ul>
                     </div>
 
                     {/* TECHNICAL SKILLS */}
-                    <div>
-                        <h2 className="text-[13px] sm:text-[14px] font-bold tracking-wider uppercase border-b-[1.5px] border-black pb-0.5 mb-2">
-                            TECHNICAL SKILLS
-                        </h2>
-                        <div className="space-y-1 text-[13px] sm:text-[13.5px] leading-snug text-black/90">
-                            <div>
-                                <strong className="text-black">Languages:</strong> JavaScript, Java, SQL, HTML, CSS
-                            </div>
-                            <div>
-                                <strong className="text-black">Frameworks:</strong> React, Node.js, Express.js, Vite, Tailwind CSS, Framer Motion, GSAP, Socket.io
-                            </div>
-                            <div>
-                                <strong className="text-black">Developer Tools:</strong> Git, GitHub, VS Code, Vercel, Render, MongoDB Atlas
-                            </div>
-                            <div>
-                                <strong className="text-black">Libraries:</strong> Mongoose, Axios, Recharts, React Router DOM, Lucide React, Three.js, PDF.js
-                            </div>
-                            <div>
-                                <strong className="text-black">AI / APIs:</strong> Google Gemini, Groq, Puter.js, OpenRouter, Pixazo AI, Pollinations.ai, Wandbox API
-                            </div>
-                        </div>
+                    <h2 className="resume-section-title">Technical Skills</h2>
+                    <div className="resume-entry" style={{ marginBottom: 0 }}>
+                        <div className="skills-row"><span className="bold-text">Languages:</span> JavaScript, Java, SQL, HTML, CSS</div>
+                        <div className="skills-row"><span className="bold-text">Frameworks:</span> React, Node.js, Express.js, Vite, Tailwind CSS, Framer Motion, GSAP, Socket.io</div>
+                        <div className="skills-row"><span className="bold-text">Developer Tools:</span> Git, GitHub, VS Code, Vercel, Render, MongoDB Atlas</div>
+                        <div className="skills-row"><span className="bold-text">Libraries:</span> Mongoose, Axios, Recharts, React Router DOM, Lucide React, Three.js, PDF.js</div>
+                        <div className="skills-row"><span className="bold-text">AI / APIs:</span> Google Gemini, Groq, Puter.js, OpenRouter, Pixazo AI, Pollinations.ai, Wandbox API</div>
                     </div>
                 </div>
 
                 {/* Print Stylesheet */}
                 <style>{`
+                    #resume-document {
+                        font-family: 'Times New Roman', Times, serif;
+                        font-size: 11pt;
+                        line-height: 1.35;
+                        color: #000;
+                    }
+                    #resume-document a {
+                        color: #0056b3;
+                        text-decoration: underline;
+                        text-underline-offset: 2px;
+                    }
+                    #resume-document a:hover {
+                        color: #003d82;
+                    }
+                    #resume-document h1.resume-name {
+                        font-size: 24pt;
+                        text-align: center;
+                        font-weight: normal;
+                        margin-bottom: 4px;
+                        line-height: 1.1;
+                    }
+                    #resume-document .resume-contact-info {
+                        text-align: center;
+                        font-size: 11pt;
+                        margin-bottom: 12px;
+                    }
+                    #resume-document h2.resume-section-title {
+                        font-size: 12pt;
+                        text-transform: uppercase;
+                        border-bottom: 1px solid #000;
+                        margin-top: 18px;
+                        margin-bottom: 8px;
+                        font-weight: bold;
+                    }
+                    #resume-document .resume-flex-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: baseline;
+                    }
+                    #resume-document .bold-text {
+                        font-weight: bold;
+                    }
+                    #resume-document .italic-text {
+                        font-style: italic;
+                    }
+                    #resume-document .resume-entry {
+                        margin-bottom: 16px;
+                    }
+                    #resume-document .resume-entry-header {
+                        margin-bottom: 2px;
+                    }
+                    #resume-document ul.resume-bullets {
+                        list-style-type: disc;
+                        padding-left: 20px;
+                        margin-top: 4px;
+                        margin-bottom: 4px;
+                    }
+                    #resume-document ul.resume-bullets li {
+                        margin-bottom: 4px;
+                        line-height: 1.35;
+                    }
+                    #resume-document .skills-row {
+                        margin-bottom: 4px;
+                        line-height: 1.35;
+                    }
+
                     @media print {
-                        body {
-                            background: white !important;
-                            color: black !important;
+                        @page {
+                            size: letter;
+                            margin: 0.5in;
                         }
+
+                        html, body {
+                            height: auto !important;
+                            min-height: auto !important;
+                            max-height: none !important;
+                            overflow: visible !important;
+                            background: #fff !important;
+                            color: #000 !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            width: 100% !important;
+                            -webkit-print-color-adjust: exact !important;
+                            print-color-adjust: exact !important;
+                        }
+
+                        /* Suppress outer site wrappers that cause top empty space and height clipping on mobile! */
+                        #root, main, .page-section, .resume-page-wrapper {
+                            height: auto !important;
+                            min-height: 0 !important;
+                            max-height: none !important;
+                            overflow: visible !important;
+                            display: block !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            transform: none !important;
+                            position: static !important;
+                        }
+
                         .no-print, nav, header, footer, #theme-toggle, [role="navigation"] {
                             display: none !important;
                         }
+
                         #resume-document {
                             box-shadow: none !important;
                             border: none !important;
                             padding: 0 !important;
-                            margin: 0 !important;
+                            margin: 0 auto !important;
                             width: 100% !important;
-                            max-width: 100% !important;
+                            max-width: 8.5in !important;
+                            display: block !important;
+                            background: #fff !important;
+                            color: #000 !important;
+                            font-family: 'Times New Roman', Times, serif !important;
+                            font-size: 11pt !important;
+                            line-height: 1.35 !important;
                         }
-                        @page {
-                            size: letter;
-                            margin: 0.45in 0.55in;
+
+                        /* Guarantee horizontal row layout in print, NEVER flex-col on mobile */
+                        #resume-document .resume-flex-row,
+                        #resume-document .resume-entry-header {
+                            display: flex !important;
+                            flex-direction: row !important;
+                            justify-content: space-between !important;
+                            align-items: baseline !important;
+                            flex-wrap: nowrap !important;
                         }
                     }
                 `}</style>
