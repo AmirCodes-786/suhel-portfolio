@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { navLinks } from "../data/content";
 import OverlayMenu from "./OverlayMenu";
 import PremiumThemeToggle from "./ThemeToggle";
-import SALogo from "./SALogo";
 
 // Track whether the app has completed its initial intro animation
 let hasCompletedInitialLoad = false;
@@ -45,16 +44,12 @@ export default function Navbar() {
                 className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[94%] max-w-5xl"
             >
                 <nav className="glass rounded-full px-6 py-3 flex items-center justify-between shadow-lg shadow-dark/[0.03] will-change-transform transform-gpu">
-                    {/* Logo / Brand Mark */}
+                    {/* Logo */}
                     <NavLink
                         to="/"
-                        className="flex items-center gap-2.5 text-dark select-none group focus:outline-none"
-                        aria-label="Suhel Ansari Home"
+                        className="text-lg font-bold tracking-tight text-dark select-none"
                     >
-                        <SALogo size={32} priority={true} />
-                        <span className="text-base sm:text-lg font-bold tracking-tight text-dark dark:text-milky transition-colors group-hover:text-dark/80 dark:group-hover:text-milky/80">
-                            Suhel<span className="text-emerald-500 font-extrabold">.</span>
-                        </span>
+                        Suhel.
                     </NavLink>
 
                     <div className="flex items-center gap-6">
